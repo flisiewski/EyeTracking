@@ -1,7 +1,9 @@
 package com.agh.eyedetection;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,6 +12,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -83,6 +88,35 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     double xCenter = -1;
     double yCenter = -1;
+
+    final static int MY_PERMISSIONS_REQUEST_LOCATION = 1;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
+                PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+                    1);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    2);
+
+
+            // MY_PERMISSIONS_REQUEST_LOCATION is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    3);
+
+        }}
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -322,10 +356,11 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
                     new Scalar(255, 0, 0, 255), 2);
 
-            if (learn_frames < 5) {
+            if (learn_frames < 100) {
                 teplateR = get_template(mJavaDetectorEye, eyearea_right, 24);
                 teplateL = get_template(mJavaDetectorEye, eyearea_left, 24);
                 learn_frames++;
+                Log.i(TAG, "TEAMPLATE " + teplateR.toString());
             } else {
                 // Learning finished, use the new templates for template
                 // matching
@@ -394,15 +429,19 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     }
 
     private void match_eye(Rect area, Mat mTemplate, int type) {
+        Log.i(TAG, "MATCH EYE");
         Point matchLoc;
         Mat mROI = mGray.submat(area);
         int result_cols = mROI.cols() - mTemplate.cols() + 1;
         int result_rows = mROI.rows() - mTemplate.rows() + 1;
         // Check for bad template size
+        Log.i(TAG, "HERE -1");
+
         if (mTemplate.cols() == 0 || mTemplate.rows() == 0) {
             return ;
         }
         Mat mResult = new Mat(result_cols, result_rows, CvType.CV_8U);
+        Log.i(TAG, "HERE1");
 
         switch (type) {
             case TM_SQDIFF:
@@ -436,9 +475,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             matchLoc = mmres.maxLoc;
         }
 
+        Log.i(TAG, "HERE2");
+
         Point matchLoc_tx = new Point(matchLoc.x + area.x, matchLoc.y + area.y);
         Point matchLoc_ty = new Point(matchLoc.x + mTemplate.cols() + area.x,
                 matchLoc.y + mTemplate.rows() + area.y);
+
+        Log.i(TAG, "matchLoc_tx " + matchLoc_tx);
 
         Imgproc.rectangle(mRgba, matchLoc_tx, matchLoc_ty, new Scalar(255, 255, 0,
                 255));
@@ -457,6 +500,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 Objdetect.CASCADE_FIND_BIGGEST_OBJECT
                         | Objdetect.CASCADE_SCALE_IMAGE, new Size(30, 30),
                 new Size());
+        Log.i(TAG, "EYES XD " + eyes);
+
 
         Rect[] eyesArray = eyes.toArray();
         for (int i = 0; i < eyesArray.length;) {
@@ -471,7 +516,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
 
             Core.MinMaxLocResult mmG = Core.minMaxLoc(mROI);
-
+            Log.i(TAG, "IN METHOD");
             Imgproc.circle(vyrez, mmG.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
             iris.x = mmG.minLoc.x + eye_only_rectangle.x;
             iris.y = mmG.minLoc.y + eye_only_rectangle.y;

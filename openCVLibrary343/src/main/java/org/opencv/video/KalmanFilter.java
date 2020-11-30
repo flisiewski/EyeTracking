@@ -19,7 +19,7 @@ public class KalmanFilter {
     public static KalmanFilter __fromPtr__(long addr) { return new KalmanFilter(addr); }
 
     //
-    // C++:   cv::KalmanFilter::KalmanFilter(int dynamParams, int measureParams, int controlParams = 0, int type = CV_32F)
+    // C++:   KalmanFilter(int dynamParams, int measureParams, int controlParams = 0, int type = CV_32F)
     //
 
     //javadoc: KalmanFilter::KalmanFilter(dynamParams, measureParams, controlParams, type)
@@ -31,41 +31,32 @@ public class KalmanFilter {
         return;
     }
 
-    //javadoc: KalmanFilter::KalmanFilter(dynamParams, measureParams, controlParams)
-    public   KalmanFilter(int dynamParams, int measureParams, int controlParams)
-    {
-        
-        nativeObj = KalmanFilter_1(dynamParams, measureParams, controlParams);
-        
-        return;
-    }
-
     //javadoc: KalmanFilter::KalmanFilter(dynamParams, measureParams)
     public   KalmanFilter(int dynamParams, int measureParams)
     {
         
-        nativeObj = KalmanFilter_2(dynamParams, measureParams);
+        nativeObj = KalmanFilter_1(dynamParams, measureParams);
         
         return;
     }
 
 
     //
-    // C++:   cv::KalmanFilter::KalmanFilter()
+    // C++:   KalmanFilter()
     //
 
     //javadoc: KalmanFilter::KalmanFilter()
     public   KalmanFilter()
     {
         
-        nativeObj = KalmanFilter_3();
+        nativeObj = KalmanFilter_2();
         
         return;
     }
 
 
     //
-    // C++:  Mat cv::KalmanFilter::correct(Mat measurement)
+    // C++:  Mat correct(Mat measurement)
     //
 
     //javadoc: KalmanFilter::correct(measurement)
@@ -79,7 +70,7 @@ public class KalmanFilter {
 
 
     //
-    // C++:  Mat cv::KalmanFilter::predict(Mat control = Mat())
+    // C++:  Mat predict(Mat control = Mat())
     //
 
     //javadoc: KalmanFilter::predict(control)
@@ -388,18 +379,17 @@ public class KalmanFilter {
 
 
 
-    // C++:   cv::KalmanFilter::KalmanFilter(int dynamParams, int measureParams, int controlParams = 0, int type = CV_32F)
+    // C++:   KalmanFilter(int dynamParams, int measureParams, int controlParams = 0, int type = CV_32F)
     private static native long KalmanFilter_0(int dynamParams, int measureParams, int controlParams, int type);
-    private static native long KalmanFilter_1(int dynamParams, int measureParams, int controlParams);
-    private static native long KalmanFilter_2(int dynamParams, int measureParams);
+    private static native long KalmanFilter_1(int dynamParams, int measureParams);
 
-    // C++:   cv::KalmanFilter::KalmanFilter()
-    private static native long KalmanFilter_3();
+    // C++:   KalmanFilter()
+    private static native long KalmanFilter_2();
 
-    // C++:  Mat cv::KalmanFilter::correct(Mat measurement)
+    // C++:  Mat correct(Mat measurement)
     private static native long correct_0(long nativeObj, long measurement_nativeObj);
 
-    // C++:  Mat cv::KalmanFilter::predict(Mat control = Mat())
+    // C++:  Mat predict(Mat control = Mat())
     private static native long predict_0(long nativeObj, long control_nativeObj);
     private static native long predict_1(long nativeObj);
 

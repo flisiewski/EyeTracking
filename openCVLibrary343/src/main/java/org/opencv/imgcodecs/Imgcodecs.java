@@ -94,7 +94,7 @@ public class Imgcodecs {
 
 
     //
-    // C++:  Mat cv::imdecode(Mat buf, int flags)
+    // C++:  Mat imdecode(Mat buf, int flags)
     //
 
     //javadoc: imdecode(buf, flags)
@@ -108,7 +108,7 @@ public class Imgcodecs {
 
 
     //
-    // C++:  Mat cv::imread(String filename, int flags = IMREAD_COLOR)
+    // C++:  Mat imread(String filename, int flags = IMREAD_COLOR)
     //
 
     //javadoc: imread(filename, flags)
@@ -131,7 +131,7 @@ public class Imgcodecs {
 
 
     //
-    // C++:  bool cv::imencode(String ext, Mat img, vector_uchar& buf, vector_int params = std::vector<int>())
+    // C++:  bool imencode(String ext, Mat img, vector_uchar& buf, vector_int params = std::vector<int>())
     //
 
     //javadoc: imencode(ext, img, buf, params)
@@ -155,7 +155,7 @@ public class Imgcodecs {
 
 
     //
-    // C++:  bool cv::imreadmulti(String filename, vector_Mat& mats, int flags = IMREAD_ANYCOLOR)
+    // C++:  bool imreadmulti(String filename, vector_Mat& mats, int flags = IMREAD_ANYCOLOR)
     //
 
     //javadoc: imreadmulti(filename, mats, flags)
@@ -180,7 +180,7 @@ public class Imgcodecs {
 
 
     //
-    // C++:  bool cv::imwrite(String filename, Mat img, vector_int params = std::vector<int>())
+    // C++:  bool imwrite(String filename, Mat img, vector_int params = std::vector<int>())
     //
 
     //javadoc: imwrite(filename, img, params)
@@ -204,22 +204,22 @@ public class Imgcodecs {
 
 
 
-    // C++:  Mat cv::imdecode(Mat buf, int flags)
+    // C++:  Mat imdecode(Mat buf, int flags)
     private static native long imdecode_0(long buf_nativeObj, int flags);
 
-    // C++:  Mat cv::imread(String filename, int flags = IMREAD_COLOR)
+    // C++:  Mat imread(String filename, int flags = IMREAD_COLOR)
     private static native long imread_0(String filename, int flags);
     private static native long imread_1(String filename);
 
-    // C++:  bool cv::imencode(String ext, Mat img, vector_uchar& buf, vector_int params = std::vector<int>())
+    // C++:  bool imencode(String ext, Mat img, vector_uchar& buf, vector_int params = std::vector<int>())
     private static native boolean imencode_0(String ext, long img_nativeObj, long buf_mat_nativeObj, long params_mat_nativeObj);
     private static native boolean imencode_1(String ext, long img_nativeObj, long buf_mat_nativeObj);
 
-    // C++:  bool cv::imreadmulti(String filename, vector_Mat& mats, int flags = IMREAD_ANYCOLOR)
+    // C++:  bool imreadmulti(String filename, vector_Mat& mats, int flags = IMREAD_ANYCOLOR)
     private static native boolean imreadmulti_0(String filename, long mats_mat_nativeObj, int flags);
     private static native boolean imreadmulti_1(String filename, long mats_mat_nativeObj);
 
-    // C++:  bool cv::imwrite(String filename, Mat img, vector_int params = std::vector<int>())
+    // C++:  bool imwrite(String filename, Mat img, vector_int params = std::vector<int>())
     private static native boolean imwrite_0(String filename, long img_nativeObj, long params_mat_nativeObj);
     private static native boolean imwrite_1(String filename, long img_nativeObj);
 

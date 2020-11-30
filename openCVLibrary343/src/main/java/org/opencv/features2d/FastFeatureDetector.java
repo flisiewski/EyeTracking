@@ -27,7 +27,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++: static Ptr_FastFeatureDetector cv::FastFeatureDetector::create(int threshold = 10, bool nonmaxSuppression = true, int type = FastFeatureDetector::TYPE_9_16)
+    // C++: static Ptr_FastFeatureDetector create(int threshold = 10, bool nonmaxSuppression = true, int type = FastFeatureDetector::TYPE_9_16)
     //
 
     //javadoc: FastFeatureDetector::create(threshold, nonmaxSuppression, type)
@@ -39,36 +39,18 @@ public class FastFeatureDetector extends Feature2D {
         return retVal;
     }
 
-    //javadoc: FastFeatureDetector::create(threshold, nonmaxSuppression)
-    public static FastFeatureDetector create(int threshold, boolean nonmaxSuppression)
-    {
-        
-        FastFeatureDetector retVal = FastFeatureDetector.__fromPtr__(create_1(threshold, nonmaxSuppression));
-        
-        return retVal;
-    }
-
-    //javadoc: FastFeatureDetector::create(threshold)
-    public static FastFeatureDetector create(int threshold)
-    {
-        
-        FastFeatureDetector retVal = FastFeatureDetector.__fromPtr__(create_2(threshold));
-        
-        return retVal;
-    }
-
     //javadoc: FastFeatureDetector::create()
     public static FastFeatureDetector create()
     {
         
-        FastFeatureDetector retVal = FastFeatureDetector.__fromPtr__(create_3());
+        FastFeatureDetector retVal = FastFeatureDetector.__fromPtr__(create_1());
         
         return retVal;
     }
 
 
     //
-    // C++:  String cv::FastFeatureDetector::getDefaultName()
+    // C++:  String getDefaultName()
     //
 
     //javadoc: FastFeatureDetector::getDefaultName()
@@ -82,7 +64,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++:  bool cv::FastFeatureDetector::getNonmaxSuppression()
+    // C++:  bool getNonmaxSuppression()
     //
 
     //javadoc: FastFeatureDetector::getNonmaxSuppression()
@@ -96,7 +78,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++:  int cv::FastFeatureDetector::getThreshold()
+    // C++:  int getThreshold()
     //
 
     //javadoc: FastFeatureDetector::getThreshold()
@@ -110,7 +92,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++:  int cv::FastFeatureDetector::getType()
+    // C++:  int getType()
     //
 
     //javadoc: FastFeatureDetector::getType()
@@ -124,7 +106,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++:  void cv::FastFeatureDetector::setNonmaxSuppression(bool f)
+    // C++:  void setNonmaxSuppression(bool f)
     //
 
     //javadoc: FastFeatureDetector::setNonmaxSuppression(f)
@@ -138,7 +120,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++:  void cv::FastFeatureDetector::setThreshold(int threshold)
+    // C++:  void setThreshold(int threshold)
     //
 
     //javadoc: FastFeatureDetector::setThreshold(threshold)
@@ -152,7 +134,7 @@ public class FastFeatureDetector extends Feature2D {
 
 
     //
-    // C++:  void cv::FastFeatureDetector::setType(int type)
+    // C++:  void setType(int type)
     //
 
     //javadoc: FastFeatureDetector::setType(type)
@@ -172,31 +154,29 @@ public class FastFeatureDetector extends Feature2D {
 
 
 
-    // C++: static Ptr_FastFeatureDetector cv::FastFeatureDetector::create(int threshold = 10, bool nonmaxSuppression = true, int type = FastFeatureDetector::TYPE_9_16)
+    // C++: static Ptr_FastFeatureDetector create(int threshold = 10, bool nonmaxSuppression = true, int type = FastFeatureDetector::TYPE_9_16)
     private static native long create_0(int threshold, boolean nonmaxSuppression, int type);
-    private static native long create_1(int threshold, boolean nonmaxSuppression);
-    private static native long create_2(int threshold);
-    private static native long create_3();
+    private static native long create_1();
 
-    // C++:  String cv::FastFeatureDetector::getDefaultName()
+    // C++:  String getDefaultName()
     private static native String getDefaultName_0(long nativeObj);
 
-    // C++:  bool cv::FastFeatureDetector::getNonmaxSuppression()
+    // C++:  bool getNonmaxSuppression()
     private static native boolean getNonmaxSuppression_0(long nativeObj);
 
-    // C++:  int cv::FastFeatureDetector::getThreshold()
+    // C++:  int getThreshold()
     private static native int getThreshold_0(long nativeObj);
 
-    // C++:  int cv::FastFeatureDetector::getType()
+    // C++:  int getType()
     private static native int getType_0(long nativeObj);
 
-    // C++:  void cv::FastFeatureDetector::setNonmaxSuppression(bool f)
+    // C++:  void setNonmaxSuppression(bool f)
     private static native void setNonmaxSuppression_0(long nativeObj, boolean f);
 
-    // C++:  void cv::FastFeatureDetector::setThreshold(int threshold)
+    // C++:  void setThreshold(int threshold)
     private static native void setThreshold_0(long nativeObj, int threshold);
 
-    // C++:  void cv::FastFeatureDetector::setType(int type)
+    // C++:  void setType(int type)
     private static native void setType_0(long nativeObj, int type);
 
     // native support for java finalize()

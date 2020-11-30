@@ -25,6 +25,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint2f;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
@@ -34,10 +35,14 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
 
+
+import org.opencv.face.*;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
@@ -68,10 +73,15 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private MenuItem               mItemFace20;
     // private MenuItem               mItemType;
 
+    private Point                  leftEyeLeftCorner;
+    private Point                  leftEyeRightCorner;
+    private Point                  rightEyeLeftCorner;
+    private Point                  rightEyeRightCorner;
     private Mat                    mRgba;
     private Mat                    mGray;
     private File                   mCascadeFile;
     private File                   mCascadeFileEye;
+    private File                   modelFile;
     private CascadeClassifier      mJavaDetector;
     private CascadeClassifier      mJavaDetectorEye;
 
@@ -88,6 +98,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     double xCenter = -1;
     double yCenter = -1;
+
+    Facemark fm;
+
 
     final static int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 
@@ -125,9 +138,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 case LoaderCallbackInterface.SUCCESS:
                 {
                     Log.i(TAG, "OpenCV loaded successfully");
-
-
                     try {
+                        fm = Face.createFacemarkLBF();
+
                         // load cascade file from application resources
                         InputStream is = getResources().openRawResource(R.raw.lbpcascade_frontalface);
                         File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
@@ -153,6 +166,19 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                         }
                         ise.close();
                         ose.close();
+
+                        InputStream isee = getResources().openRawResource(R.raw.lbfmodel);
+                        File modelDir = getDir("cascade", Context.MODE_PRIVATE);
+                        modelFile = new File(modelDir, "lbfmodel.yaml");
+                        FileOutputStream osee = new FileOutputStream(modelFile);
+
+                        while ((bytesRead = isee.read(buffer)) != -1) {
+                            osee.write(buffer, 0, bytesRead);
+                        }
+                        isee.close();
+                        osee.close();
+
+                        fm.loadModel(modelFile.getAbsolutePath());
 
                         mJavaDetector = new CascadeClassifier(mCascadeFile.getAbsolutePath());
                         if (mJavaDetector.empty()) {
@@ -321,6 +347,44 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             Log.e(TAG, "Detection method is not selected!");
         }
 
+        try {
+            ArrayList<MatOfPoint2f> landmarks = new ArrayList<MatOfPoint2f>();
+            fm.fit(mGray, faces, landmarks);
+
+            // draw them
+            for (int i = 0; i < landmarks.size(); i++) {
+
+                MatOfPoint2f lm = landmarks.get(i);
+                for (int j = 0; j < lm.rows(); j++) {
+                    if(j == 36 || j == 39 || j == 42 || j == 45) {
+                        double[] dp = lm.get(j, 0);
+                        Point p = new Point(dp[0], dp[1]);
+                        if(j == 36){
+                            leftEyeLeftCorner = p;
+                        } else if (j == 39){
+                            leftEyeRightCorner = p;
+                        } else if (j == 42) {
+                            rightEyeLeftCorner = p;
+                        } else {
+                            rightEyeRightCorner = p;
+                        }
+                        Imgproc.circle(mRgba, p, 4, new Scalar(222), 4);
+                    }
+                }
+
+            }
+
+            double rightX = (rightEyeRightCorner.x + rightEyeLeftCorner.x)/2;
+            double rightY = (rightEyeRightCorner.y + rightEyeLeftCorner.y)/2;
+            Point right = new Point(rightX, rightY);
+            Imgproc.circle(mRgba, right, 2, new Scalar(0,0,255), 3);
+
+
+            Log.e(TAG, "After");
+        } catch (Exception ex){
+
+        }
+
         Rect[] facesArray = faces.toArray();
         for (int i = 0; i < facesArray.length; i++)
         {	Imgproc.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
@@ -356,9 +420,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
                     new Scalar(255, 0, 0, 255), 2);
 
-            if (learn_frames < 100) {
-                teplateR = get_template(mJavaDetectorEye, eyearea_right, 24);
-                teplateL = get_template(mJavaDetectorEye, eyearea_left, 24);
+            if (learn_frames < 10000) {
+                teplateR = get_template(mJavaDetectorEye, eyearea_right, 24, "right");
+                teplateL = get_template(mJavaDetectorEye, eyearea_left, 24, "left");
                 learn_frames++;
                 Log.i(TAG, "TEAMPLATE " + teplateR.toString());
             } else {
@@ -490,7 +554,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     }
 
-    private Mat get_template(CascadeClassifier clasificator, Rect area, int size) {
+    private Mat get_template(CascadeClassifier clasificator, Rect area, int size, String which) {
         Mat template = new Mat();
         Mat mROI = mGray.submat(area);
         MatOfRect eyes = new MatOfRect();
@@ -515,9 +579,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             Mat vyrez = mRgba.submat(eye_only_rectangle);
 
 
+
+
             Core.MinMaxLocResult mmG = Core.minMaxLoc(mROI);
             Log.i(TAG, "IN METHOD");
             Imgproc.circle(vyrez, mmG.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
+
+
             iris.x = mmG.minLoc.x + eye_only_rectangle.x;
             iris.y = mmG.minLoc.y + eye_only_rectangle.y;
             eye_template = new Rect((int) iris.x - size / 2, (int) iris.y

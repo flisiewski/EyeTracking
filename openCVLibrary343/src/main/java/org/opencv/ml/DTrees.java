@@ -26,7 +26,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  Mat cv::ml::DTrees::getPriors()
+    // C++:  Mat getPriors()
     //
 
     //javadoc: DTrees::getPriors()
@@ -40,7 +40,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++: static Ptr_DTrees cv::ml::DTrees::create()
+    // C++: static Ptr_DTrees create()
     //
 
     //javadoc: DTrees::create()
@@ -54,7 +54,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++: static Ptr_DTrees cv::ml::DTrees::load(String filepath, String nodeName = String())
+    // C++: static Ptr_DTrees load(String filepath, String nodeName = String())
     //
 
     //javadoc: DTrees::load(filepath, nodeName)
@@ -77,7 +77,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  bool cv::ml::DTrees::getTruncatePrunedTree()
+    // C++:  bool getTruncatePrunedTree()
     //
 
     //javadoc: DTrees::getTruncatePrunedTree()
@@ -91,7 +91,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  bool cv::ml::DTrees::getUse1SERule()
+    // C++:  bool getUse1SERule()
     //
 
     //javadoc: DTrees::getUse1SERule()
@@ -105,7 +105,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  bool cv::ml::DTrees::getUseSurrogates()
+    // C++:  bool getUseSurrogates()
     //
 
     //javadoc: DTrees::getUseSurrogates()
@@ -119,7 +119,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  float cv::ml::DTrees::getRegressionAccuracy()
+    // C++:  float getRegressionAccuracy()
     //
 
     //javadoc: DTrees::getRegressionAccuracy()
@@ -133,7 +133,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  int cv::ml::DTrees::getCVFolds()
+    // C++:  int getCVFolds()
     //
 
     //javadoc: DTrees::getCVFolds()
@@ -147,7 +147,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  int cv::ml::DTrees::getMaxCategories()
+    // C++:  int getMaxCategories()
     //
 
     //javadoc: DTrees::getMaxCategories()
@@ -161,7 +161,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  int cv::ml::DTrees::getMaxDepth()
+    // C++:  int getMaxDepth()
     //
 
     //javadoc: DTrees::getMaxDepth()
@@ -175,7 +175,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  int cv::ml::DTrees::getMinSampleCount()
+    // C++:  int getMinSampleCount()
     //
 
     //javadoc: DTrees::getMinSampleCount()
@@ -189,7 +189,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setCVFolds(int val)
+    // C++:  void setCVFolds(int val)
     //
 
     //javadoc: DTrees::setCVFolds(val)
@@ -203,7 +203,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setMaxCategories(int val)
+    // C++:  void setMaxCategories(int val)
     //
 
     //javadoc: DTrees::setMaxCategories(val)
@@ -217,7 +217,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setMaxDepth(int val)
+    // C++:  void setMaxDepth(int val)
     //
 
     //javadoc: DTrees::setMaxDepth(val)
@@ -231,7 +231,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setMinSampleCount(int val)
+    // C++:  void setMinSampleCount(int val)
     //
 
     //javadoc: DTrees::setMinSampleCount(val)
@@ -245,7 +245,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setPriors(Mat val)
+    // C++:  void setPriors(Mat val)
     //
 
     //javadoc: DTrees::setPriors(val)
@@ -259,7 +259,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setRegressionAccuracy(float val)
+    // C++:  void setRegressionAccuracy(float val)
     //
 
     //javadoc: DTrees::setRegressionAccuracy(val)
@@ -273,7 +273,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setTruncatePrunedTree(bool val)
+    // C++:  void setTruncatePrunedTree(bool val)
     //
 
     //javadoc: DTrees::setTruncatePrunedTree(val)
@@ -287,7 +287,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setUse1SERule(bool val)
+    // C++:  void setUse1SERule(bool val)
     //
 
     //javadoc: DTrees::setUse1SERule(val)
@@ -301,7 +301,7 @@ public class DTrees extends StatModel {
 
 
     //
-    // C++:  void cv::ml::DTrees::setUseSurrogates(bool val)
+    // C++:  void setUseSurrogates(bool val)
     //
 
     //javadoc: DTrees::setUseSurrogates(val)
@@ -321,65 +321,65 @@ public class DTrees extends StatModel {
 
 
 
-    // C++:  Mat cv::ml::DTrees::getPriors()
+    // C++:  Mat getPriors()
     private static native long getPriors_0(long nativeObj);
 
-    // C++: static Ptr_DTrees cv::ml::DTrees::create()
+    // C++: static Ptr_DTrees create()
     private static native long create_0();
 
-    // C++: static Ptr_DTrees cv::ml::DTrees::load(String filepath, String nodeName = String())
+    // C++: static Ptr_DTrees load(String filepath, String nodeName = String())
     private static native long load_0(String filepath, String nodeName);
     private static native long load_1(String filepath);
 
-    // C++:  bool cv::ml::DTrees::getTruncatePrunedTree()
+    // C++:  bool getTruncatePrunedTree()
     private static native boolean getTruncatePrunedTree_0(long nativeObj);
 
-    // C++:  bool cv::ml::DTrees::getUse1SERule()
+    // C++:  bool getUse1SERule()
     private static native boolean getUse1SERule_0(long nativeObj);
 
-    // C++:  bool cv::ml::DTrees::getUseSurrogates()
+    // C++:  bool getUseSurrogates()
     private static native boolean getUseSurrogates_0(long nativeObj);
 
-    // C++:  float cv::ml::DTrees::getRegressionAccuracy()
+    // C++:  float getRegressionAccuracy()
     private static native float getRegressionAccuracy_0(long nativeObj);
 
-    // C++:  int cv::ml::DTrees::getCVFolds()
+    // C++:  int getCVFolds()
     private static native int getCVFolds_0(long nativeObj);
 
-    // C++:  int cv::ml::DTrees::getMaxCategories()
+    // C++:  int getMaxCategories()
     private static native int getMaxCategories_0(long nativeObj);
 
-    // C++:  int cv::ml::DTrees::getMaxDepth()
+    // C++:  int getMaxDepth()
     private static native int getMaxDepth_0(long nativeObj);
 
-    // C++:  int cv::ml::DTrees::getMinSampleCount()
+    // C++:  int getMinSampleCount()
     private static native int getMinSampleCount_0(long nativeObj);
 
-    // C++:  void cv::ml::DTrees::setCVFolds(int val)
+    // C++:  void setCVFolds(int val)
     private static native void setCVFolds_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::DTrees::setMaxCategories(int val)
+    // C++:  void setMaxCategories(int val)
     private static native void setMaxCategories_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::DTrees::setMaxDepth(int val)
+    // C++:  void setMaxDepth(int val)
     private static native void setMaxDepth_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::DTrees::setMinSampleCount(int val)
+    // C++:  void setMinSampleCount(int val)
     private static native void setMinSampleCount_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::DTrees::setPriors(Mat val)
+    // C++:  void setPriors(Mat val)
     private static native void setPriors_0(long nativeObj, long val_nativeObj);
 
-    // C++:  void cv::ml::DTrees::setRegressionAccuracy(float val)
+    // C++:  void setRegressionAccuracy(float val)
     private static native void setRegressionAccuracy_0(long nativeObj, float val);
 
-    // C++:  void cv::ml::DTrees::setTruncatePrunedTree(bool val)
+    // C++:  void setTruncatePrunedTree(bool val)
     private static native void setTruncatePrunedTree_0(long nativeObj, boolean val);
 
-    // C++:  void cv::ml::DTrees::setUse1SERule(bool val)
+    // C++:  void setUse1SERule(bool val)
     private static native void setUse1SERule_0(long nativeObj, boolean val);
 
-    // C++:  void cv::ml::DTrees::setUseSurrogates(bool val)
+    // C++:  void setUseSurrogates(bool val)
     private static native void setUseSurrogates_0(long nativeObj, boolean val);
 
     // native support for java finalize()

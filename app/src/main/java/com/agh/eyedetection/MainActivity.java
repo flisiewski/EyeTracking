@@ -47,9 +47,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity implements CvCameraViewListener2 {
 
-    private static final String    TAG                 = "OCVSample::Activity";
-    private static final Scalar    FACE_RECT_COLOR     = new Scalar(0, 255, 0, 255);
-    public static final int        JAVA_DETECTOR       = 0;
+    private static final String TAG = "OCVSample::Activity";
+    private static final Scalar FACE_RECT_COLOR = new Scalar(0, 255, 0, 255);
+    public static final int JAVA_DETECTOR = 0;
     private static final int TM_SQDIFF = 0;
     private static final int TM_SQDIFF_NORMED = 1;
     private static final int TM_CCOEFF = 2;
@@ -67,32 +67,32 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private Mat mZoomWindow;
     private Mat mZoomWindow2;
 
-    private MenuItem               mItemFace50;
-    private MenuItem               mItemFace40;
-    private MenuItem               mItemFace30;
-    private MenuItem               mItemFace20;
+    private MenuItem mItemFace50;
+    private MenuItem mItemFace40;
+    private MenuItem mItemFace30;
+    private MenuItem mItemFace20;
     // private MenuItem               mItemType;
 
-    private Point                  leftEyeLeftCorner;
-    private Point                  leftEyeRightCorner;
-    private Point                  rightEyeLeftCorner;
-    private Point                  rightEyeRightCorner;
-    private Mat                    mRgba;
-    private Mat                    mGray;
-    private File                   mCascadeFile;
-    private File                   mCascadeFileEye;
-    private File                   modelFile;
-    private CascadeClassifier      mJavaDetector;
-    private CascadeClassifier      mJavaDetectorEye;
+    private Point leftEyeLeftCorner;
+    private Point leftEyeRightCorner;
+    private Point rightEyeLeftCorner;
+    private Point rightEyeRightCorner;
+    private Mat mRgba;
+    private Mat mGray;
+    private File mCascadeFile;
+    private File mCascadeFileEye;
+    private File modelFile;
+    private CascadeClassifier mJavaDetector;
+    private CascadeClassifier mJavaDetectorEye;
 
 
-    private int                    mDetectorType       = JAVA_DETECTOR;
-    private String[]               mDetectorName;
+    private int mDetectorType = JAVA_DETECTOR;
+    private String[] mDetectorName;
 
-    private float                  mRelativeFaceSize   = 0.2f;
+    private float mRelativeFaceSize = 0.2f;
     private int mAbsoluteFaceSize = 0;
 
-    private CameraBridgeViewBase   mOpenCvCameraView;
+    private CameraBridgeViewBase mOpenCvCameraView;
     private SeekBar mMethodSeekbar;
     private TextView mValue;
 
@@ -129,14 +129,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     3);
 
-        }}
+        }
+    }
 
-    private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
+    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
             switch (status) {
-                case LoaderCallbackInterface.SUCCESS:
-                {
+                case LoaderCallbackInterface.SUCCESS: {
                     Log.i(TAG, "OpenCV loaded successfully");
                     try {
                         fm = Face.createFacemarkLBF();
@@ -204,11 +204,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     mOpenCvCameraView.enableFpsMeter();
                     mOpenCvCameraView.setCameraIndex(1);
                     mOpenCvCameraView.enableView();
-                } break;
-                default:
-                {
+                }
+                break;
+                default: {
                     super.onManagerConnected(status);
-                } break;
+                }
+                break;
             }
         }
     };
@@ -220,7 +221,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "called onCreate");
@@ -238,23 +241,20 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         mMethodSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar)
-            {
+            public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
 
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar)
-            {
+            public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
 
             }
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
-                                          boolean fromUser)
-            {
+                                          boolean fromUser) {
                 method = progress;
                 switch (method) {
                     case 0:
@@ -283,16 +283,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     }
 
     @Override
-    public void onPause()
-    {
+    public void onPause() {
         super.onPause();
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
         if (!OpenCVLoader.initDebug()) {
             Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
@@ -342,8 +340,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             if (mJavaDetector != null)
                 mJavaDetector.detectMultiScale(mGray, faces, 1.1, 2, 2, // TODO: objdetect.CV_HAAR_SCALE_IMAGE
                         new Size(mAbsoluteFaceSize, mAbsoluteFaceSize), new Size());
-        }
-        else {
+        } else {
             Log.e(TAG, "Detection method is not selected!");
         }
 
@@ -356,49 +353,49 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
                 MatOfPoint2f lm = landmarks.get(i);
                 for (int j = 0; j < lm.rows(); j++) {
-                    if(j == 36 || j == 39 || j == 42 || j == 45) {
+                    if (j == 36 || j == 39 || j == 42 || j == 45) {
                         double[] dp = lm.get(j, 0);
                         Point p = new Point(dp[0], dp[1]);
-                        if(j == 36){
+                        if (j == 36) {
                             leftEyeLeftCorner = p;
-                        } else if (j == 39){
+                        } else if (j == 39) {
                             leftEyeRightCorner = p;
                         } else if (j == 42) {
                             rightEyeLeftCorner = p;
                         } else {
                             rightEyeRightCorner = p;
                         }
-                        Imgproc.circle(mRgba, p, 4, new Scalar(222), 4);
+//                        Imgproc.circle(mRgba, p, 4, new Scalar(222), 4);
                     }
                 }
 
             }
 
-            double rightX = (rightEyeRightCorner.x + rightEyeLeftCorner.x)/2;
-            double rightY = (rightEyeRightCorner.y + rightEyeLeftCorner.y)/2;
+            double rightX = (rightEyeRightCorner.x + rightEyeLeftCorner.x) / 2;
+            double rightY = (rightEyeRightCorner.y + rightEyeLeftCorner.y) / 2;
             Point right = new Point(rightX, rightY);
-            Imgproc.circle(mRgba, right, 2, new Scalar(0,0,255), 3);
+//            Imgproc.circle(mRgba, right, 2, new Scalar(0, 0, 255), 3);
 
 
             Log.e(TAG, "After");
-        } catch (Exception ex){
+        } catch (Exception ex) {
 
         }
 
         Rect[] facesArray = faces.toArray();
-        for (int i = 0; i < facesArray.length; i++)
-        {	Imgproc.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
-                FACE_RECT_COLOR, 3);
+        for (int i = 0; i < facesArray.length; i++) {
+//            Imgproc.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
+//                    FACE_RECT_COLOR, 3);
             xCenter = (facesArray[i].x + facesArray[i].width + facesArray[i].x) / 2;
             yCenter = (facesArray[i].y + facesArray[i].y + facesArray[i].height) / 2;
             Point center = new Point(xCenter, yCenter);
 
-            Imgproc.circle(mRgba, center, 10, new Scalar(255, 0, 0, 255), 3);
-
-            Imgproc.putText(mRgba, "[" + center.x + "," + center.y + "]",
-                    new Point(center.x + 20, center.y + 20),
-                    Core.FONT_HERSHEY_SIMPLEX, 0.7, new Scalar(255, 255, 255,
-                            255));
+//            Imgproc.circle(mRgba, center, 10, new Scalar(255, 0, 0, 255), 3);
+//
+//            Imgproc.putText(mRgba, "[" + center.x + "," + center.y + "]",
+//                    new Point(center.x + 20, center.y + 20),
+//                    Core.FONT_HERSHEY_SIMPLEX, 0.7, new Scalar(255, 255, 255,
+//                            255));
 
             Rect r = facesArray[i];
             // compute the eye area
@@ -415,30 +412,24 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     (r.width - 2 * r.width / 16) / 2, (int) (r.height / 3.0));
             // draw the area - mGray is working grayscale mat, if you want to
             // see area in rgb preview, change mGray to mRgba
-            Imgproc.rectangle(mRgba, eyearea_left.tl(), eyearea_left.br(),
-                    new Scalar(255, 0, 0, 255), 2);
-            Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
-                    new Scalar(255, 0, 0, 255), 2);
+//            Imgproc.rectangle(mRgba, eyearea_left.tl(), eyearea_left.br(),
+//                    new Scalar(255, 0, 0, 255), 2);
+//            Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
+//                    new Scalar(255, 0, 0, 255), 2);
 
-            if (learn_frames < 10000) {
-                teplateR = get_template(mJavaDetectorEye, eyearea_right, 24, "right");
-                teplateL = get_template(mJavaDetectorEye, eyearea_left, 24, "left");
-                learn_frames++;
-                Log.i(TAG, "TEAMPLATE " + teplateR.toString());
-            } else {
-                // Learning finished, use the new templates for template
-                // matching
-                match_eye(eyearea_right, teplateR, method);
-                match_eye(eyearea_left, teplateL, method);
-
-            }
+            teplateR = get_template(mJavaDetectorEye, eyearea_right, 24, "right");
+            teplateL = get_template(mJavaDetectorEye, eyearea_left, 24, "left");
+            learn_frames++;
+            Log.i(TAG, "TEAMPLATE " + teplateR.toString());
 
 
             // cut eye areas and put them to zoom windows
-            Imgproc.resize(mRgba.submat(eyearea_left), mZoomWindow2,
-                    mZoomWindow2.size());
-            Imgproc.resize(mRgba.submat(eyearea_right), mZoomWindow,
-                    mZoomWindow.size());
+//            Imgproc.resize(mRgba.submat(eyearea_left), mZoomWindow2,
+//                    mZoomWindow2.size());
+//            Imgproc.resize(mRgba.submat(eyearea_right), mZoomWindow,
+//                    mZoomWindow.size());
+
+
 
 
         }
@@ -502,7 +493,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         Log.i(TAG, "HERE -1");
 
         if (mTemplate.cols() == 0 || mTemplate.rows() == 0) {
-            return ;
+            return;
         }
         Mat mResult = new Mat(result_cols, result_rows, CvType.CV_8U);
         Log.i(TAG, "HERE1");
@@ -549,7 +540,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
         Imgproc.rectangle(mRgba, matchLoc_tx, matchLoc_ty, new Scalar(255, 255, 0,
                 255));
-        Rect rec = new Rect(matchLoc_tx,matchLoc_ty);
+        Rect rec = new Rect(matchLoc_tx, matchLoc_ty);
 
 
     }
@@ -568,7 +559,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
 
         Rect[] eyesArray = eyes.toArray();
-        for (int i = 0; i < eyesArray.length;) {
+        for (int i = 0; i < eyesArray.length; ) {
             Rect e = eyesArray[i];
             e.x = area.x + e.x;
             e.y = area.y + e.y;
@@ -579,27 +570,33 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             Mat vyrez = mRgba.submat(eye_only_rectangle);
 
 
-
-
             Core.MinMaxLocResult mmG = Core.minMaxLoc(mROI);
             Log.i(TAG, "IN METHOD");
-            Imgproc.circle(vyrez, mmG.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
+//            Imgproc.circle(vyrez, mmG.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
 
 
             iris.x = mmG.minLoc.x + eye_only_rectangle.x;
             iris.y = mmG.minLoc.y + eye_only_rectangle.y;
+
+            if (which.equals("right")) {
+                Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0);
+                Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+            } else {
+                Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0);
+                Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+            }
+
             eye_template = new Rect((int) iris.x - size / 2, (int) iris.y
                     - size / 2, size, size);
-            Imgproc.rectangle(mRgba, eye_template.tl(), eye_template.br(),
-                    new Scalar(255, 0, 0, 255), 2);
+//            Imgproc.rectangle(mRgba, eye_template.tl(), eye_template.br(),
+//                    new Scalar(255, 0, 0, 255), 2);
             template = (mGray.submat(eye_template)).clone();
             return template;
         }
         return template;
     }
 
-    public void onRecreateClick(View v)
-    {
+    public void onRecreateClick(View v) {
         learn_frames = 0;
     }
 

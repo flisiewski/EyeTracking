@@ -578,12 +578,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             iris.x = mmG.minLoc.x + eye_only_rectangle.x;
             iris.y = mmG.minLoc.y + eye_only_rectangle.y;
 
+
             if (which.equals("right")) {
                 Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0);
-                Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                Point endPoint = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
+                //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                Imgproc.arrowedLine(mRgba, iris, endPoint, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
             } else {
                 Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0);
-                Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                Point endPoint = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
+                //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                Imgproc.arrowedLine(mRgba, iris, endPoint, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
             }
 
             eye_template = new Rect((int) iris.x - size / 2, (int) iris.y

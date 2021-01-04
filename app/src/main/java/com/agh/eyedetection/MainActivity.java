@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private int learn_frames = 0;
     private Mat teplateR;
     private Mat teplateL;
+    private int openEyeLen;
     int method = 0;
 
     // matrix for zooming
@@ -77,6 +78,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private Point leftEyeRightCorner;
     private Point rightEyeLeftCorner;
     private Point rightEyeRightCorner;
+    private Point hipoteticalLeftIris;
+    private Point hipoteticalRightIris;
     private Mat mRgba;
     private Mat mGray;
     private File mCascadeFile;
@@ -369,10 +372,20 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     }
                 }
 
+                openEyeLen = (int)(lm.get(37, 0)[1] - lm.get(41, 0)[1] +
+                              lm.get(38, 0)[1] - lm.get(40, 0)[1] +
+                              lm.get(43, 0)[1] - lm.get(47, 0)[1] +
+                              lm.get(44, 0)[1] - lm.get(46, 0)[1]) / 4;
+                hipoteticalLeftIris = new Point((lm.get(37, 0)[0] + lm.get(41, 0)[0] + lm.get(38, 0)[0] + lm.get(40, 0)[0])/4,
+                                                (lm.get(37, 0)[1] + lm.get(41, 0)[1] + lm.get(38, 0)[1] + lm.get(40, 0)[1])/4);
+
+                hipoteticalLeftIris = new Point((lm.get(43, 0)[0] + lm.get(44, 0)[0] + lm.get(46, 0)[0] + lm.get(47, 0)[0])/4,
+                                                (lm.get(43, 0)[1] + lm.get(44, 0)[1] + lm.get(46, 0)[1] + lm.get(47, 0)[1])/4);
+
             }
 
             double rightX = (rightEyeRightCorner.x + rightEyeLeftCorner.x) / 2;
-            double rightY = (rightEyeRightCorner.y + rightEyeLeftCorner.y) / 2;
+            double rightY = (rightEyeRightCorner.y + rightEyeLeftCorner.y + 20) / 2;
             Point right = new Point(rightX, rightY);
 //            Imgproc.circle(mRgba, right, 2, new Scalar(0, 0, 255), 3);
 
@@ -417,11 +430,23 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 //            Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
 //                    new Scalar(255, 0, 0, 255), 2);
 
-            teplateR = get_template(mJavaDetectorEye, eyearea_right, 24, "right");
-            teplateL = get_template(mJavaDetectorEye, eyearea_left, 24, "left");
-            learn_frames++;
-            Log.i(TAG, "TEAMPLATE " + teplateR.toString());
+            EyeLookingVector left, right;
+            right = get_template(mJavaDetectorEye, eyearea_right, 24, "right");
+            left = get_template(mJavaDetectorEye, eyearea_left, 24, "left");
 
+            if(right != null && left != null && left.awayFromCenter + right.awayFromCenter > 20 - openEyeLen/2){
+                int newXDiff = (int) (right.endPoint.x - right.iris.x + left.endPoint.x - left.iris.x)/2;
+                int newYDiff = (int) (right.endPoint.y - right.iris.y + left.endPoint.y - left.iris.y)/2;
+
+                Point newLeftEnd = new Point(left.iris.x + newXDiff, left.iris.y + newYDiff);
+                Point newRightEnd = new Point(right.iris.x + newXDiff, right.iris.y + newYDiff);
+
+                if(Math.abs(newXDiff) < 50 && Math.abs(newYDiff) < 50) {
+                    Imgproc.arrowedLine(mRgba, left.iris, newLeftEnd, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                    Imgproc.arrowedLine(mRgba, right.iris, newRightEnd, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                }
+            }
+            learn_frames++;
 
             // cut eye areas and put them to zoom windows
 //            Imgproc.resize(mRgba.submat(eyearea_left), mZoomWindow2,
@@ -545,11 +570,13 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     }
 
-    private Mat get_template(CascadeClassifier clasificator, Rect area, int size, String which) {
+    private EyeLookingVector get_template(CascadeClassifier clasificator, Rect area, int size, String which) {
         Mat template = new Mat();
         Mat mROI = mGray.submat(area);
         MatOfRect eyes = new MatOfRect();
         Point iris = new Point();
+        EyeLookingVector eyeLookingVector = null;
+
         Rect eye_template = new Rect();
         clasificator.detectMultiScale(mROI, eyes, 1.15, 2,
                 Objdetect.CASCADE_FIND_BIGGEST_OBJECT
@@ -578,27 +605,49 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
             iris.x = mmG.minLoc.x + eye_only_rectangle.x;
             iris.y = mmG.minLoc.y + eye_only_rectangle.y;
 
-
+            Point leftEnd, rightEnd;
+            double leftAwayFromCenter, rightAwayFromCenter;
+            Log.e(TAG, "Open eye: " + openEyeLen);
             if (which.equals("right")) {
-                Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0);
-                Point endPoint = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
+                Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
+                rightEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
                 //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
-                Imgproc.arrowedLine(mRgba, iris, endPoint, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                rightAwayFromCenter = Math.sqrt(Math.pow(center.x - rightEnd.x, 2) + Math.pow(center.y - rightEnd.y, 2));
+                eyeLookingVector = new EyeLookingVector(iris, rightEnd, rightAwayFromCenter);
             } else {
-                Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0);
-                Point endPoint = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
+                Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
+                leftEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
                 //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
-                Imgproc.arrowedLine(mRgba, iris, endPoint, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+                leftAwayFromCenter = Math.sqrt(Math.pow(center.x - leftEnd.x, 2) + Math.pow(center.y - leftEnd.y, 2));
+                eyeLookingVector = new EyeLookingVector(iris, leftEnd, leftAwayFromCenter);
             }
+
 
             eye_template = new Rect((int) iris.x - size / 2, (int) iris.y
                     - size / 2, size, size);
 //            Imgproc.rectangle(mRgba, eye_template.tl(), eye_template.br(),
 //                    new Scalar(255, 0, 0, 255), 2);
             template = (mGray.submat(eye_template)).clone();
-            return template;
+            return eyeLookingVector;
         }
-        return template;
+        double leftAwayFromCenter, rightAwayFromCenter;
+        Point leftEnd, rightEnd;
+        if (which.equals("right") && hipoteticalRightIris != null) {
+            iris = hipoteticalRightIris;
+            Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
+            rightEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
+            //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+            rightAwayFromCenter = Math.sqrt(Math.pow(center.x - rightEnd.x, 2) + Math.pow(center.y - rightEnd.y, 2));
+            eyeLookingVector = new EyeLookingVector(iris, rightEnd, rightAwayFromCenter);
+        } else if (hipoteticalLeftIris != null) {
+            iris = hipoteticalLeftIris;
+            Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
+            leftEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
+            //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
+            leftAwayFromCenter = Math.sqrt(Math.pow(center.x - leftEnd.x, 2) + Math.pow(center.y - leftEnd.y, 2));
+            eyeLookingVector = new EyeLookingVector(iris, leftEnd, leftAwayFromCenter);
+        }
+        return eyeLookingVector;
     }
 
     public void onRecreateClick(View v) {

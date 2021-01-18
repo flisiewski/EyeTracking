@@ -48,21 +48,9 @@ import java.util.ArrayList;
 public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     private static final String TAG = "OCVSample::Activity";
-    private static final Scalar FACE_RECT_COLOR = new Scalar(0, 255, 0, 255);
     public static final int JAVA_DETECTOR = 0;
-    private static final int TM_SQDIFF = 0;
-    private static final int TM_SQDIFF_NORMED = 1;
-    private static final int TM_CCOEFF = 2;
-    private static final int TM_CCOEFF_NORMED = 3;
-    private static final int TM_CCORR = 4;
-    private static final int TM_CCORR_NORMED = 5;
 
-
-    private int learn_frames = 0;
-    private Mat teplateR;
-    private Mat teplateL;
     private int openEyeLen;
-    int method = 0;
 
     // matrix for zooming
     private Mat mZoomWindow;
@@ -72,14 +60,12 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private MenuItem mItemFace40;
     private MenuItem mItemFace30;
     private MenuItem mItemFace20;
-    // private MenuItem               mItemType;
 
     private Point leftEyeLeftCorner;
     private Point leftEyeRightCorner;
     private Point rightEyeLeftCorner;
     private Point rightEyeRightCorner;
-    private Point hipoteticalLeftIris;
-    private Point hipoteticalRightIris;
+
     private Mat mRgba;
     private Mat mGray;
     private File mCascadeFile;
@@ -96,8 +82,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
     private int mAbsoluteFaceSize = 0;
 
     private CameraBridgeViewBase mOpenCvCameraView;
-    private SeekBar mMethodSeekbar;
-    private TextView mValue;
 
     double xCenter = -1;
     double yCenter = -1;
@@ -238,51 +222,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.fd_activity_surface_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
 
-        mMethodSeekbar = (SeekBar) findViewById(R.id.methodSeekBar);
-        mValue = (TextView) findViewById(R.id.method);
-
-        mMethodSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress,
-                                          boolean fromUser) {
-                method = progress;
-                switch (method) {
-                    case 0:
-                        mValue.setText("TM_SQDIFF");
-                        break;
-                    case 1:
-                        mValue.setText("TM_SQDIFF_NORMED");
-                        break;
-                    case 2:
-                        mValue.setText("TM_CCOEFF");
-                        break;
-                    case 3:
-                        mValue.setText("TM_CCOEFF_NORMED");
-                        break;
-                    case 4:
-                        mValue.setText("TM_CCORR");
-                        break;
-                    case 5:
-                        mValue.setText("TM_CCORR_NORMED");
-                        break;
-                }
-
-
-            }
-        });
     }
 
     @Override
@@ -368,7 +307,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                         } else {
                             rightEyeRightCorner = p;
                         }
-//                        Imgproc.circle(mRgba, p, 4, new Scalar(222), 4);
                     }
                 }
 
@@ -376,45 +314,24 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                               lm.get(38, 0)[1] - lm.get(40, 0)[1] +
                               lm.get(43, 0)[1] - lm.get(47, 0)[1] +
                               lm.get(44, 0)[1] - lm.get(46, 0)[1]) / 4;
-                hipoteticalLeftIris = new Point((lm.get(37, 0)[0] + lm.get(41, 0)[0] + lm.get(38, 0)[0] + lm.get(40, 0)[0])/4,
-                                                (lm.get(37, 0)[1] + lm.get(41, 0)[1] + lm.get(38, 0)[1] + lm.get(40, 0)[1])/4);
-
-                hipoteticalLeftIris = new Point((lm.get(43, 0)[0] + lm.get(44, 0)[0] + lm.get(46, 0)[0] + lm.get(47, 0)[0])/4,
-                                                (lm.get(43, 0)[1] + lm.get(44, 0)[1] + lm.get(46, 0)[1] + lm.get(47, 0)[1])/4);
-
             }
 
-            double rightX = (rightEyeRightCorner.x + rightEyeLeftCorner.x) / 2;
-            double rightY = (rightEyeRightCorner.y + rightEyeLeftCorner.y + 20) / 2;
-            Point right = new Point(rightX, rightY);
-//            Imgproc.circle(mRgba, right, 2, new Scalar(0, 0, 255), 3);
-
-
-            Log.e(TAG, "After");
         } catch (Exception ex) {
 
         }
 
         Rect[] facesArray = faces.toArray();
         for (int i = 0; i < facesArray.length; i++) {
-//            Imgproc.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
-//                    FACE_RECT_COLOR, 3);
+
             xCenter = (facesArray[i].x + facesArray[i].width + facesArray[i].x) / 2;
             yCenter = (facesArray[i].y + facesArray[i].y + facesArray[i].height) / 2;
             Point center = new Point(xCenter, yCenter);
 
-//            Imgproc.circle(mRgba, center, 10, new Scalar(255, 0, 0, 255), 3);
-//
-//            Imgproc.putText(mRgba, "[" + center.x + "," + center.y + "]",
-//                    new Point(center.x + 20, center.y + 20),
-//                    Core.FONT_HERSHEY_SIMPLEX, 0.7, new Scalar(255, 255, 255,
-//                            255));
+
 
             Rect r = facesArray[i];
             // compute the eye area
-            Rect eyearea = new Rect(r.x + r.width / 8,
-                    (int) (r.y + (r.height / 4.5)), r.width - 2 * r.width / 8,
-                    (int) (r.height / 3.0));
+
             // split it
             Rect eyearea_right = new Rect(r.x + r.width / 16,
                     (int) (r.y + (r.height / 4.5)),
@@ -423,12 +340,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     + (r.width - 2 * r.width / 16) / 2,
                     (int) (r.y + (r.height / 4.5)),
                     (r.width - 2 * r.width / 16) / 2, (int) (r.height / 3.0));
-            // draw the area - mGray is working grayscale mat, if you want to
-            // see area in rgb preview, change mGray to mRgba
-//            Imgproc.rectangle(mRgba, eyearea_left.tl(), eyearea_left.br(),
-//                    new Scalar(255, 0, 0, 255), 2);
-//            Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
-//                    new Scalar(255, 0, 0, 255), 2);
+
 
             EyeLookingVector left, right;
             right = get_template(mJavaDetectorEye, eyearea_right, 24, "right");
@@ -441,55 +353,14 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                 Point newLeftEnd = new Point(left.iris.x + newXDiff, left.iris.y + newYDiff);
                 Point newRightEnd = new Point(right.iris.x + newXDiff, right.iris.y + newYDiff);
 
-                if(Math.abs(newXDiff) < 50 && Math.abs(newYDiff) < 50) {
+                if(Math.abs(newXDiff) < 50 && Math.abs(newYDiff) < 50 && (Math.abs(newXDiff) > 10 || Math.abs(newYDiff) > 10)) {
                     Imgproc.arrowedLine(mRgba, left.iris, newLeftEnd, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
                     Imgproc.arrowedLine(mRgba, right.iris, newRightEnd, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
                 }
             }
-            learn_frames++;
-
-            // cut eye areas and put them to zoom windows
-//            Imgproc.resize(mRgba.submat(eyearea_left), mZoomWindow2,
-//                    mZoomWindow2.size());
-//            Imgproc.resize(mRgba.submat(eyearea_right), mZoomWindow,
-//                    mZoomWindow.size());
-
-
-
-
         }
 
         return mRgba;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Log.i(TAG, "called onCreateOptionsMenu");
-        mItemFace50 = menu.add("Face size 50%");
-        mItemFace40 = menu.add("Face size 40%");
-        mItemFace30 = menu.add("Face size 30%");
-        mItemFace20 = menu.add("Face size 20%");
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i(TAG, "called onOptionsItemSelected; selected item: " + item);
-        if (item == mItemFace50)
-            setMinFaceSize(0.5f);
-        else if (item == mItemFace40)
-            setMinFaceSize(0.4f);
-        else if (item == mItemFace30)
-            setMinFaceSize(0.3f);
-        else if (item == mItemFace20)
-            setMinFaceSize(0.2f);
-
-        return true;
-    }
-
-    private void setMinFaceSize(float faceSize) {
-        mRelativeFaceSize = faceSize;
-        mAbsoluteFaceSize = 0;
     }
 
     private void CreateAuxiliaryMats() {
@@ -508,81 +379,16 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
     }
 
-    private void match_eye(Rect area, Mat mTemplate, int type) {
-        Log.i(TAG, "MATCH EYE");
-        Point matchLoc;
-        Mat mROI = mGray.submat(area);
-        int result_cols = mROI.cols() - mTemplate.cols() + 1;
-        int result_rows = mROI.rows() - mTemplate.rows() + 1;
-        // Check for bad template size
-        Log.i(TAG, "HERE -1");
-
-        if (mTemplate.cols() == 0 || mTemplate.rows() == 0) {
-            return;
-        }
-        Mat mResult = new Mat(result_cols, result_rows, CvType.CV_8U);
-        Log.i(TAG, "HERE1");
-
-        switch (type) {
-            case TM_SQDIFF:
-                Imgproc.matchTemplate(mROI, mTemplate, mResult, Imgproc.TM_SQDIFF);
-                break;
-            case TM_SQDIFF_NORMED:
-                Imgproc.matchTemplate(mROI, mTemplate, mResult,
-                        Imgproc.TM_SQDIFF_NORMED);
-                break;
-            case TM_CCOEFF:
-                Imgproc.matchTemplate(mROI, mTemplate, mResult, Imgproc.TM_CCOEFF);
-                break;
-            case TM_CCOEFF_NORMED:
-                Imgproc.matchTemplate(mROI, mTemplate, mResult,
-                        Imgproc.TM_CCOEFF_NORMED);
-                break;
-            case TM_CCORR:
-                Imgproc.matchTemplate(mROI, mTemplate, mResult, Imgproc.TM_CCORR);
-                break;
-            case TM_CCORR_NORMED:
-                Imgproc.matchTemplate(mROI, mTemplate, mResult,
-                        Imgproc.TM_CCORR_NORMED);
-                break;
-        }
-
-        Core.MinMaxLocResult mmres = Core.minMaxLoc(mResult);
-        // there is difference in matching methods - best match is max/min value
-        if (type == TM_SQDIFF || type == TM_SQDIFF_NORMED) {
-            matchLoc = mmres.minLoc;
-        } else {
-            matchLoc = mmres.maxLoc;
-        }
-
-        Log.i(TAG, "HERE2");
-
-        Point matchLoc_tx = new Point(matchLoc.x + area.x, matchLoc.y + area.y);
-        Point matchLoc_ty = new Point(matchLoc.x + mTemplate.cols() + area.x,
-                matchLoc.y + mTemplate.rows() + area.y);
-
-        Log.i(TAG, "matchLoc_tx " + matchLoc_tx);
-
-        Imgproc.rectangle(mRgba, matchLoc_tx, matchLoc_ty, new Scalar(255, 255, 0,
-                255));
-        Rect rec = new Rect(matchLoc_tx, matchLoc_ty);
-
-
-    }
-
     private EyeLookingVector get_template(CascadeClassifier clasificator, Rect area, int size, String which) {
-        Mat template = new Mat();
         Mat mROI = mGray.submat(area);
         MatOfRect eyes = new MatOfRect();
         Point iris = new Point();
         EyeLookingVector eyeLookingVector = null;
 
-        Rect eye_template = new Rect();
         clasificator.detectMultiScale(mROI, eyes, 1.15, 2,
                 Objdetect.CASCADE_FIND_BIGGEST_OBJECT
                         | Objdetect.CASCADE_SCALE_IMAGE, new Size(30, 30),
                 new Size());
-        Log.i(TAG, "EYES XD " + eyes);
 
 
         Rect[] eyesArray = eyes.toArray();
@@ -594,64 +400,29 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
                     (int) (e.tl().y + e.height * 0.4), (int) e.width,
                     (int) (e.height * 0.6));
             mROI = mGray.submat(eye_only_rectangle);
-            Mat vyrez = mRgba.submat(eye_only_rectangle);
-
 
             Core.MinMaxLocResult mmG = Core.minMaxLoc(mROI);
-            Log.i(TAG, "IN METHOD");
-//            Imgproc.circle(vyrez, mmG.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
-
 
             iris.x = mmG.minLoc.x + eye_only_rectangle.x;
             iris.y = mmG.minLoc.y + eye_only_rectangle.y;
 
             Point leftEnd, rightEnd;
             double leftAwayFromCenter, rightAwayFromCenter;
-            Log.e(TAG, "Open eye: " + openEyeLen);
             if (which.equals("right")) {
-                Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
+                Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0  - 20 - openEyeLen/2.0);
                 rightEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
-                //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
                 rightAwayFromCenter = Math.sqrt(Math.pow(center.x - rightEnd.x, 2) + Math.pow(center.y - rightEnd.y, 2));
                 eyeLookingVector = new EyeLookingVector(iris, rightEnd, rightAwayFromCenter);
             } else {
-                Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
+                Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0  - 20 - openEyeLen/2.0);
                 leftEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
-                //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
                 leftAwayFromCenter = Math.sqrt(Math.pow(center.x - leftEnd.x, 2) + Math.pow(center.y - leftEnd.y, 2));
                 eyeLookingVector = new EyeLookingVector(iris, leftEnd, leftAwayFromCenter);
             }
 
-
-            eye_template = new Rect((int) iris.x - size / 2, (int) iris.y
-                    - size / 2, size, size);
-//            Imgproc.rectangle(mRgba, eye_template.tl(), eye_template.br(),
-//                    new Scalar(255, 0, 0, 255), 2);
-            template = (mGray.submat(eye_template)).clone();
             return eyeLookingVector;
         }
-        double leftAwayFromCenter, rightAwayFromCenter;
-        Point leftEnd, rightEnd;
-        if (which.equals("right") && hipoteticalRightIris != null) {
-            iris = hipoteticalRightIris;
-            Point center = new Point((leftEyeLeftCorner.x + leftEyeRightCorner.x) / 2.0, (leftEyeLeftCorner.y + leftEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
-            rightEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
-            //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
-            rightAwayFromCenter = Math.sqrt(Math.pow(center.x - rightEnd.x, 2) + Math.pow(center.y - rightEnd.y, 2));
-            eyeLookingVector = new EyeLookingVector(iris, rightEnd, rightAwayFromCenter);
-        } else if (hipoteticalLeftIris != null) {
-            iris = hipoteticalLeftIris;
-            Point center = new Point((rightEyeLeftCorner.x + rightEyeRightCorner.x) / 2.0, (rightEyeLeftCorner.y + rightEyeRightCorner.y) / 2.0 - 20 - openEyeLen/2);
-            leftEnd = new Point(iris.x + (iris.x - center.x) * 2, iris.y + (iris.y - center.y) * 2);
-            //Imgproc.arrowedLine(mRgba, center, iris, new Scalar(255, 0, 0, 255), 5, 1, 0, 1);
-            leftAwayFromCenter = Math.sqrt(Math.pow(center.x - leftEnd.x, 2) + Math.pow(center.y - leftEnd.y, 2));
-            eyeLookingVector = new EyeLookingVector(iris, leftEnd, leftAwayFromCenter);
-        }
+
         return eyeLookingVector;
     }
-
-    public void onRecreateClick(View v) {
-        learn_frames = 0;
-    }
-
 }

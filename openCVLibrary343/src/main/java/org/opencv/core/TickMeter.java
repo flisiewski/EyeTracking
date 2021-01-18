@@ -19,7 +19,7 @@ public class TickMeter {
     public static TickMeter __fromPtr__(long addr) { return new TickMeter(addr); }
 
     //
-    // C++:   cv::TickMeter::TickMeter()
+    // C++:   TickMeter()
     //
 
     //javadoc: TickMeter::TickMeter()
@@ -33,7 +33,7 @@ public class TickMeter {
 
 
     //
-    // C++:  double cv::TickMeter::getTimeMicro()
+    // C++:  double getTimeMicro()
     //
 
     //javadoc: TickMeter::getTimeMicro()
@@ -47,7 +47,7 @@ public class TickMeter {
 
 
     //
-    // C++:  double cv::TickMeter::getTimeMilli()
+    // C++:  double getTimeMilli()
     //
 
     //javadoc: TickMeter::getTimeMilli()
@@ -61,7 +61,7 @@ public class TickMeter {
 
 
     //
-    // C++:  double cv::TickMeter::getTimeSec()
+    // C++:  double getTimeSec()
     //
 
     //javadoc: TickMeter::getTimeSec()
@@ -75,7 +75,7 @@ public class TickMeter {
 
 
     //
-    // C++:  int64 cv::TickMeter::getCounter()
+    // C++:  int64 getCounter()
     //
 
     //javadoc: TickMeter::getCounter()
@@ -89,7 +89,7 @@ public class TickMeter {
 
 
     //
-    // C++:  int64 cv::TickMeter::getTimeTicks()
+    // C++:  int64 getTimeTicks()
     //
 
     //javadoc: TickMeter::getTimeTicks()
@@ -103,7 +103,7 @@ public class TickMeter {
 
 
     //
-    // C++:  void cv::TickMeter::reset()
+    // C++:  void reset()
     //
 
     //javadoc: TickMeter::reset()
@@ -117,7 +117,7 @@ public class TickMeter {
 
 
     //
-    // C++:  void cv::TickMeter::start()
+    // C++:  void start()
     //
 
     //javadoc: TickMeter::start()
@@ -131,7 +131,7 @@ public class TickMeter {
 
 
     //
-    // C++:  void cv::TickMeter::stop()
+    // C++:  void stop()
     //
 
     //javadoc: TickMeter::stop()
@@ -151,31 +151,31 @@ public class TickMeter {
 
 
 
-    // C++:   cv::TickMeter::TickMeter()
+    // C++:   TickMeter()
     private static native long TickMeter_0();
 
-    // C++:  double cv::TickMeter::getTimeMicro()
+    // C++:  double getTimeMicro()
     private static native double getTimeMicro_0(long nativeObj);
 
-    // C++:  double cv::TickMeter::getTimeMilli()
+    // C++:  double getTimeMilli()
     private static native double getTimeMilli_0(long nativeObj);
 
-    // C++:  double cv::TickMeter::getTimeSec()
+    // C++:  double getTimeSec()
     private static native double getTimeSec_0(long nativeObj);
 
-    // C++:  int64 cv::TickMeter::getCounter()
+    // C++:  int64 getCounter()
     private static native long getCounter_0(long nativeObj);
 
-    // C++:  int64 cv::TickMeter::getTimeTicks()
+    // C++:  int64 getTimeTicks()
     private static native long getTimeTicks_0(long nativeObj);
 
-    // C++:  void cv::TickMeter::reset()
+    // C++:  void reset()
     private static native void reset_0(long nativeObj);
 
-    // C++:  void cv::TickMeter::start()
+    // C++:  void start()
     private static native void start_0(long nativeObj);
 
-    // C++:  void cv::TickMeter::stop()
+    // C++:  void stop()
     private static native void stop_0(long nativeObj);
 
     // native support for java finalize()

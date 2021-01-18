@@ -18,7 +18,7 @@ public class CLAHE extends Algorithm {
     public static CLAHE __fromPtr__(long addr) { return new CLAHE(addr); }
 
     //
-    // C++:  Size cv::CLAHE::getTilesGridSize()
+    // C++:  Size getTilesGridSize()
     //
 
     //javadoc: CLAHE::getTilesGridSize()
@@ -32,7 +32,7 @@ public class CLAHE extends Algorithm {
 
 
     //
-    // C++:  double cv::CLAHE::getClipLimit()
+    // C++:  double getClipLimit()
     //
 
     //javadoc: CLAHE::getClipLimit()
@@ -46,7 +46,7 @@ public class CLAHE extends Algorithm {
 
 
     //
-    // C++:  void cv::CLAHE::apply(Mat src, Mat& dst)
+    // C++:  void apply(Mat src, Mat& dst)
     //
 
     //javadoc: CLAHE::apply(src, dst)
@@ -60,7 +60,7 @@ public class CLAHE extends Algorithm {
 
 
     //
-    // C++:  void cv::CLAHE::collectGarbage()
+    // C++:  void collectGarbage()
     //
 
     //javadoc: CLAHE::collectGarbage()
@@ -74,7 +74,7 @@ public class CLAHE extends Algorithm {
 
 
     //
-    // C++:  void cv::CLAHE::setClipLimit(double clipLimit)
+    // C++:  void setClipLimit(double clipLimit)
     //
 
     //javadoc: CLAHE::setClipLimit(clipLimit)
@@ -88,7 +88,7 @@ public class CLAHE extends Algorithm {
 
 
     //
-    // C++:  void cv::CLAHE::setTilesGridSize(Size tileGridSize)
+    // C++:  void setTilesGridSize(Size tileGridSize)
     //
 
     //javadoc: CLAHE::setTilesGridSize(tileGridSize)
@@ -108,22 +108,22 @@ public class CLAHE extends Algorithm {
 
 
 
-    // C++:  Size cv::CLAHE::getTilesGridSize()
+    // C++:  Size getTilesGridSize()
     private static native double[] getTilesGridSize_0(long nativeObj);
 
-    // C++:  double cv::CLAHE::getClipLimit()
+    // C++:  double getClipLimit()
     private static native double getClipLimit_0(long nativeObj);
 
-    // C++:  void cv::CLAHE::apply(Mat src, Mat& dst)
+    // C++:  void apply(Mat src, Mat& dst)
     private static native void apply_0(long nativeObj, long src_nativeObj, long dst_nativeObj);
 
-    // C++:  void cv::CLAHE::collectGarbage()
+    // C++:  void collectGarbage()
     private static native void collectGarbage_0(long nativeObj);
 
-    // C++:  void cv::CLAHE::setClipLimit(double clipLimit)
+    // C++:  void setClipLimit(double clipLimit)
     private static native void setClipLimit_0(long nativeObj, double clipLimit);
 
-    // C++:  void cv::CLAHE::setTilesGridSize(Size tileGridSize)
+    // C++:  void setTilesGridSize(Size tileGridSize)
     private static native void setTilesGridSize_0(long nativeObj, double tileGridSize_width, double tileGridSize_height);
 
     // native support for java finalize()

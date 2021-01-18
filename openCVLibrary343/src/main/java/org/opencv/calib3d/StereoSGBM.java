@@ -24,7 +24,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++: static Ptr_StereoSGBM cv::StereoSGBM::create(int minDisparity = 0, int numDisparities = 16, int blockSize = 3, int P1 = 0, int P2 = 0, int disp12MaxDiff = 0, int preFilterCap = 0, int uniquenessRatio = 0, int speckleWindowSize = 0, int speckleRange = 0, int mode = StereoSGBM::MODE_SGBM)
+    // C++: static Ptr_StereoSGBM create(int minDisparity = 0, int numDisparities = 16, int blockSize = 3, int P1 = 0, int P2 = 0, int disp12MaxDiff = 0, int preFilterCap = 0, int uniquenessRatio = 0, int speckleWindowSize = 0, int speckleRange = 0, int mode = StereoSGBM::MODE_SGBM)
     //
 
     //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio, speckleWindowSize, speckleRange, mode)
@@ -36,108 +36,18 @@ public class StereoSGBM extends StereoMatcher {
         return retVal;
     }
 
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio, speckleWindowSize, speckleRange)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio, int speckleWindowSize, int speckleRange)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_1(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio, speckleWindowSize, speckleRange));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio, speckleWindowSize)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio, int speckleWindowSize)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_2(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio, speckleWindowSize));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_3(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap, uniquenessRatio));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_4(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff, preFilterCap));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_5(minDisparity, numDisparities, blockSize, P1, P2, disp12MaxDiff));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1, P2)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1, int P2)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_6(minDisparity, numDisparities, blockSize, P1, P2));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize, P1)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize, int P1)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_7(minDisparity, numDisparities, blockSize, P1));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities, blockSize)
-    public static StereoSGBM create(int minDisparity, int numDisparities, int blockSize)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_8(minDisparity, numDisparities, blockSize));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity, numDisparities)
-    public static StereoSGBM create(int minDisparity, int numDisparities)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_9(minDisparity, numDisparities));
-        
-        return retVal;
-    }
-
-    //javadoc: StereoSGBM::create(minDisparity)
-    public static StereoSGBM create(int minDisparity)
-    {
-        
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_10(minDisparity));
-        
-        return retVal;
-    }
-
     //javadoc: StereoSGBM::create()
     public static StereoSGBM create()
     {
         
-        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_11());
+        StereoSGBM retVal = StereoSGBM.__fromPtr__(create_1());
         
         return retVal;
     }
 
 
     //
-    // C++:  int cv::StereoSGBM::getMode()
+    // C++:  int getMode()
     //
 
     //javadoc: StereoSGBM::getMode()
@@ -151,7 +61,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  int cv::StereoSGBM::getP1()
+    // C++:  int getP1()
     //
 
     //javadoc: StereoSGBM::getP1()
@@ -165,7 +75,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  int cv::StereoSGBM::getP2()
+    // C++:  int getP2()
     //
 
     //javadoc: StereoSGBM::getP2()
@@ -179,7 +89,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  int cv::StereoSGBM::getPreFilterCap()
+    // C++:  int getPreFilterCap()
     //
 
     //javadoc: StereoSGBM::getPreFilterCap()
@@ -193,7 +103,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  int cv::StereoSGBM::getUniquenessRatio()
+    // C++:  int getUniquenessRatio()
     //
 
     //javadoc: StereoSGBM::getUniquenessRatio()
@@ -207,7 +117,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  void cv::StereoSGBM::setMode(int mode)
+    // C++:  void setMode(int mode)
     //
 
     //javadoc: StereoSGBM::setMode(mode)
@@ -221,7 +131,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  void cv::StereoSGBM::setP1(int P1)
+    // C++:  void setP1(int P1)
     //
 
     //javadoc: StereoSGBM::setP1(P1)
@@ -235,7 +145,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  void cv::StereoSGBM::setP2(int P2)
+    // C++:  void setP2(int P2)
     //
 
     //javadoc: StereoSGBM::setP2(P2)
@@ -249,7 +159,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  void cv::StereoSGBM::setPreFilterCap(int preFilterCap)
+    // C++:  void setPreFilterCap(int preFilterCap)
     //
 
     //javadoc: StereoSGBM::setPreFilterCap(preFilterCap)
@@ -263,7 +173,7 @@ public class StereoSGBM extends StereoMatcher {
 
 
     //
-    // C++:  void cv::StereoSGBM::setUniquenessRatio(int uniquenessRatio)
+    // C++:  void setUniquenessRatio(int uniquenessRatio)
     //
 
     //javadoc: StereoSGBM::setUniquenessRatio(uniquenessRatio)
@@ -283,48 +193,38 @@ public class StereoSGBM extends StereoMatcher {
 
 
 
-    // C++: static Ptr_StereoSGBM cv::StereoSGBM::create(int minDisparity = 0, int numDisparities = 16, int blockSize = 3, int P1 = 0, int P2 = 0, int disp12MaxDiff = 0, int preFilterCap = 0, int uniquenessRatio = 0, int speckleWindowSize = 0, int speckleRange = 0, int mode = StereoSGBM::MODE_SGBM)
+    // C++: static Ptr_StereoSGBM create(int minDisparity = 0, int numDisparities = 16, int blockSize = 3, int P1 = 0, int P2 = 0, int disp12MaxDiff = 0, int preFilterCap = 0, int uniquenessRatio = 0, int speckleWindowSize = 0, int speckleRange = 0, int mode = StereoSGBM::MODE_SGBM)
     private static native long create_0(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio, int speckleWindowSize, int speckleRange, int mode);
-    private static native long create_1(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio, int speckleWindowSize, int speckleRange);
-    private static native long create_2(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio, int speckleWindowSize);
-    private static native long create_3(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio);
-    private static native long create_4(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff, int preFilterCap);
-    private static native long create_5(int minDisparity, int numDisparities, int blockSize, int P1, int P2, int disp12MaxDiff);
-    private static native long create_6(int minDisparity, int numDisparities, int blockSize, int P1, int P2);
-    private static native long create_7(int minDisparity, int numDisparities, int blockSize, int P1);
-    private static native long create_8(int minDisparity, int numDisparities, int blockSize);
-    private static native long create_9(int minDisparity, int numDisparities);
-    private static native long create_10(int minDisparity);
-    private static native long create_11();
+    private static native long create_1();
 
-    // C++:  int cv::StereoSGBM::getMode()
+    // C++:  int getMode()
     private static native int getMode_0(long nativeObj);
 
-    // C++:  int cv::StereoSGBM::getP1()
+    // C++:  int getP1()
     private static native int getP1_0(long nativeObj);
 
-    // C++:  int cv::StereoSGBM::getP2()
+    // C++:  int getP2()
     private static native int getP2_0(long nativeObj);
 
-    // C++:  int cv::StereoSGBM::getPreFilterCap()
+    // C++:  int getPreFilterCap()
     private static native int getPreFilterCap_0(long nativeObj);
 
-    // C++:  int cv::StereoSGBM::getUniquenessRatio()
+    // C++:  int getUniquenessRatio()
     private static native int getUniquenessRatio_0(long nativeObj);
 
-    // C++:  void cv::StereoSGBM::setMode(int mode)
+    // C++:  void setMode(int mode)
     private static native void setMode_0(long nativeObj, int mode);
 
-    // C++:  void cv::StereoSGBM::setP1(int P1)
+    // C++:  void setP1(int P1)
     private static native void setP1_0(long nativeObj, int P1);
 
-    // C++:  void cv::StereoSGBM::setP2(int P2)
+    // C++:  void setP2(int P2)
     private static native void setP2_0(long nativeObj, int P2);
 
-    // C++:  void cv::StereoSGBM::setPreFilterCap(int preFilterCap)
+    // C++:  void setPreFilterCap(int preFilterCap)
     private static native void setPreFilterCap_0(long nativeObj, int preFilterCap);
 
-    // C++:  void cv::StereoSGBM::setUniquenessRatio(int uniquenessRatio)
+    // C++:  void setUniquenessRatio(int uniquenessRatio)
     private static native void setUniquenessRatio_0(long nativeObj, int uniquenessRatio);
 
     // native support for java finalize()

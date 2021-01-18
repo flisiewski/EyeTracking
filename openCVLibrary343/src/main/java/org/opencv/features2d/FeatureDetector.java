@@ -82,7 +82,7 @@ public class FeatureDetector {
 
 
     //
-    // C++: static Ptr_javaFeatureDetector cv::javaFeatureDetector::create(int detectorType)
+    // C++: static Ptr_javaFeatureDetector create(int detectorType)
     //
 
     //javadoc: javaFeatureDetector::create(detectorType)
@@ -97,7 +97,7 @@ public class FeatureDetector {
 
 
     //
-    // C++:  bool cv::javaFeatureDetector::empty()
+    // C++:  bool empty()
     //
 
     //javadoc: javaFeatureDetector::empty()
@@ -111,7 +111,7 @@ public class FeatureDetector {
 
 
     //
-    // C++:  void cv::javaFeatureDetector::detect(Mat image, vector_KeyPoint& keypoints, Mat mask = Mat())
+    // C++:  void detect(Mat image, vector_KeyPoint& keypoints, Mat mask = Mat())
     //
 
     //javadoc: javaFeatureDetector::detect(image, keypoints, mask)
@@ -134,7 +134,7 @@ public class FeatureDetector {
 
 
     //
-    // C++:  void cv::javaFeatureDetector::detect(vector_Mat images, vector_vector_KeyPoint& keypoints, vector_Mat masks = std::vector<Mat>())
+    // C++:  void detect(vector_Mat images, vector_vector_KeyPoint& keypoints, vector_Mat masks = std::vector<Mat>())
     //
 
     //javadoc: javaFeatureDetector::detect(images, keypoints, masks)
@@ -162,7 +162,7 @@ public class FeatureDetector {
 
 
     //
-    // C++:  void cv::javaFeatureDetector::read(String fileName)
+    // C++:  void read(String fileName)
     //
 
     //javadoc: javaFeatureDetector::read(fileName)
@@ -176,7 +176,7 @@ public class FeatureDetector {
 
 
     //
-    // C++:  void cv::javaFeatureDetector::write(String fileName)
+    // C++:  void write(String fileName)
     //
 
     //javadoc: javaFeatureDetector::write(fileName)
@@ -196,24 +196,24 @@ public class FeatureDetector {
 
 
 
-    // C++: static Ptr_javaFeatureDetector cv::javaFeatureDetector::create(int detectorType)
+    // C++: static Ptr_javaFeatureDetector create(int detectorType)
     private static native long create_0(int detectorType);
 
-    // C++:  bool cv::javaFeatureDetector::empty()
+    // C++:  bool empty()
     private static native boolean empty_0(long nativeObj);
 
-    // C++:  void cv::javaFeatureDetector::detect(Mat image, vector_KeyPoint& keypoints, Mat mask = Mat())
+    // C++:  void detect(Mat image, vector_KeyPoint& keypoints, Mat mask = Mat())
     private static native void detect_0(long nativeObj, long image_nativeObj, long keypoints_mat_nativeObj, long mask_nativeObj);
     private static native void detect_1(long nativeObj, long image_nativeObj, long keypoints_mat_nativeObj);
 
-    // C++:  void cv::javaFeatureDetector::detect(vector_Mat images, vector_vector_KeyPoint& keypoints, vector_Mat masks = std::vector<Mat>())
+    // C++:  void detect(vector_Mat images, vector_vector_KeyPoint& keypoints, vector_Mat masks = std::vector<Mat>())
     private static native void detect_2(long nativeObj, long images_mat_nativeObj, long keypoints_mat_nativeObj, long masks_mat_nativeObj);
     private static native void detect_3(long nativeObj, long images_mat_nativeObj, long keypoints_mat_nativeObj);
 
-    // C++:  void cv::javaFeatureDetector::read(String fileName)
+    // C++:  void read(String fileName)
     private static native void read_0(long nativeObj, String fileName);
 
-    // C++:  void cv::javaFeatureDetector::write(String fileName)
+    // C++:  void write(String fileName)
     private static native void write_0(long nativeObj, String fileName);
 
     // native support for java finalize()

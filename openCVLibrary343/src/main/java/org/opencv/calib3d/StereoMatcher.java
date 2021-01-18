@@ -22,7 +22,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  int cv::StereoMatcher::getBlockSize()
+    // C++:  int getBlockSize()
     //
 
     //javadoc: StereoMatcher::getBlockSize()
@@ -36,7 +36,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  int cv::StereoMatcher::getDisp12MaxDiff()
+    // C++:  int getDisp12MaxDiff()
     //
 
     //javadoc: StereoMatcher::getDisp12MaxDiff()
@@ -50,7 +50,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  int cv::StereoMatcher::getMinDisparity()
+    // C++:  int getMinDisparity()
     //
 
     //javadoc: StereoMatcher::getMinDisparity()
@@ -64,7 +64,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  int cv::StereoMatcher::getNumDisparities()
+    // C++:  int getNumDisparities()
     //
 
     //javadoc: StereoMatcher::getNumDisparities()
@@ -78,7 +78,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  int cv::StereoMatcher::getSpeckleRange()
+    // C++:  int getSpeckleRange()
     //
 
     //javadoc: StereoMatcher::getSpeckleRange()
@@ -92,7 +92,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  int cv::StereoMatcher::getSpeckleWindowSize()
+    // C++:  int getSpeckleWindowSize()
     //
 
     //javadoc: StereoMatcher::getSpeckleWindowSize()
@@ -106,7 +106,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::compute(Mat left, Mat right, Mat& disparity)
+    // C++:  void compute(Mat left, Mat right, Mat& disparity)
     //
 
     //javadoc: StereoMatcher::compute(left, right, disparity)
@@ -120,7 +120,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::setBlockSize(int blockSize)
+    // C++:  void setBlockSize(int blockSize)
     //
 
     //javadoc: StereoMatcher::setBlockSize(blockSize)
@@ -134,7 +134,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::setDisp12MaxDiff(int disp12MaxDiff)
+    // C++:  void setDisp12MaxDiff(int disp12MaxDiff)
     //
 
     //javadoc: StereoMatcher::setDisp12MaxDiff(disp12MaxDiff)
@@ -148,7 +148,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::setMinDisparity(int minDisparity)
+    // C++:  void setMinDisparity(int minDisparity)
     //
 
     //javadoc: StereoMatcher::setMinDisparity(minDisparity)
@@ -162,7 +162,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::setNumDisparities(int numDisparities)
+    // C++:  void setNumDisparities(int numDisparities)
     //
 
     //javadoc: StereoMatcher::setNumDisparities(numDisparities)
@@ -176,7 +176,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::setSpeckleRange(int speckleRange)
+    // C++:  void setSpeckleRange(int speckleRange)
     //
 
     //javadoc: StereoMatcher::setSpeckleRange(speckleRange)
@@ -190,7 +190,7 @@ public class StereoMatcher extends Algorithm {
 
 
     //
-    // C++:  void cv::StereoMatcher::setSpeckleWindowSize(int speckleWindowSize)
+    // C++:  void setSpeckleWindowSize(int speckleWindowSize)
     //
 
     //javadoc: StereoMatcher::setSpeckleWindowSize(speckleWindowSize)
@@ -210,43 +210,43 @@ public class StereoMatcher extends Algorithm {
 
 
 
-    // C++:  int cv::StereoMatcher::getBlockSize()
+    // C++:  int getBlockSize()
     private static native int getBlockSize_0(long nativeObj);
 
-    // C++:  int cv::StereoMatcher::getDisp12MaxDiff()
+    // C++:  int getDisp12MaxDiff()
     private static native int getDisp12MaxDiff_0(long nativeObj);
 
-    // C++:  int cv::StereoMatcher::getMinDisparity()
+    // C++:  int getMinDisparity()
     private static native int getMinDisparity_0(long nativeObj);
 
-    // C++:  int cv::StereoMatcher::getNumDisparities()
+    // C++:  int getNumDisparities()
     private static native int getNumDisparities_0(long nativeObj);
 
-    // C++:  int cv::StereoMatcher::getSpeckleRange()
+    // C++:  int getSpeckleRange()
     private static native int getSpeckleRange_0(long nativeObj);
 
-    // C++:  int cv::StereoMatcher::getSpeckleWindowSize()
+    // C++:  int getSpeckleWindowSize()
     private static native int getSpeckleWindowSize_0(long nativeObj);
 
-    // C++:  void cv::StereoMatcher::compute(Mat left, Mat right, Mat& disparity)
+    // C++:  void compute(Mat left, Mat right, Mat& disparity)
     private static native void compute_0(long nativeObj, long left_nativeObj, long right_nativeObj, long disparity_nativeObj);
 
-    // C++:  void cv::StereoMatcher::setBlockSize(int blockSize)
+    // C++:  void setBlockSize(int blockSize)
     private static native void setBlockSize_0(long nativeObj, int blockSize);
 
-    // C++:  void cv::StereoMatcher::setDisp12MaxDiff(int disp12MaxDiff)
+    // C++:  void setDisp12MaxDiff(int disp12MaxDiff)
     private static native void setDisp12MaxDiff_0(long nativeObj, int disp12MaxDiff);
 
-    // C++:  void cv::StereoMatcher::setMinDisparity(int minDisparity)
+    // C++:  void setMinDisparity(int minDisparity)
     private static native void setMinDisparity_0(long nativeObj, int minDisparity);
 
-    // C++:  void cv::StereoMatcher::setNumDisparities(int numDisparities)
+    // C++:  void setNumDisparities(int numDisparities)
     private static native void setNumDisparities_0(long nativeObj, int numDisparities);
 
-    // C++:  void cv::StereoMatcher::setSpeckleRange(int speckleRange)
+    // C++:  void setSpeckleRange(int speckleRange)
     private static native void setSpeckleRange_0(long nativeObj, int speckleRange);
 
-    // C++:  void cv::StereoMatcher::setSpeckleWindowSize(int speckleWindowSize)
+    // C++:  void setSpeckleWindowSize(int speckleWindowSize)
     private static native void setSpeckleWindowSize_0(long nativeObj, int speckleWindowSize);
 
     // native support for java finalize()

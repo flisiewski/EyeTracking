@@ -678,41 +678,6 @@ public class Videoio {
             CAP_PROP_IMAGES_LAST = 19000;
 
 
-    //
-    // C++:  String cv::videoio_registry::getBackendName(VideoCaptureAPIs api)
-    //
-
-    // Unknown type 'VideoCaptureAPIs' (I), skipping the function
-
-
-    //
-    // C++:  vector_VideoCaptureAPIs cv::videoio_registry::getBackends()
-    //
-
-    // Return type 'vector_VideoCaptureAPIs' is not supported, skipping the function
-
-
-    //
-    // C++:  vector_VideoCaptureAPIs cv::videoio_registry::getCameraBackends()
-    //
-
-    // Return type 'vector_VideoCaptureAPIs' is not supported, skipping the function
-
-
-    //
-    // C++:  vector_VideoCaptureAPIs cv::videoio_registry::getStreamBackends()
-    //
-
-    // Return type 'vector_VideoCaptureAPIs' is not supported, skipping the function
-
-
-    //
-    // C++:  vector_VideoCaptureAPIs cv::videoio_registry::getWriterBackends()
-    //
-
-    // Return type 'vector_VideoCaptureAPIs' is not supported, skipping the function
-
-
 
 
 }

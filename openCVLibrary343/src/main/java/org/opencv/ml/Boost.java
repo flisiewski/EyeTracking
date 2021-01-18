@@ -25,7 +25,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++: static Ptr_Boost cv::ml::Boost::create()
+    // C++: static Ptr_Boost create()
     //
 
     //javadoc: Boost::create()
@@ -39,7 +39,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++: static Ptr_Boost cv::ml::Boost::load(String filepath, String nodeName = String())
+    // C++: static Ptr_Boost load(String filepath, String nodeName = String())
     //
 
     //javadoc: Boost::load(filepath, nodeName)
@@ -62,7 +62,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++:  double cv::ml::Boost::getWeightTrimRate()
+    // C++:  double getWeightTrimRate()
     //
 
     //javadoc: Boost::getWeightTrimRate()
@@ -76,7 +76,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++:  int cv::ml::Boost::getBoostType()
+    // C++:  int getBoostType()
     //
 
     //javadoc: Boost::getBoostType()
@@ -90,7 +90,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++:  int cv::ml::Boost::getWeakCount()
+    // C++:  int getWeakCount()
     //
 
     //javadoc: Boost::getWeakCount()
@@ -104,7 +104,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++:  void cv::ml::Boost::setBoostType(int val)
+    // C++:  void setBoostType(int val)
     //
 
     //javadoc: Boost::setBoostType(val)
@@ -118,7 +118,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++:  void cv::ml::Boost::setWeakCount(int val)
+    // C++:  void setWeakCount(int val)
     //
 
     //javadoc: Boost::setWeakCount(val)
@@ -132,7 +132,7 @@ public class Boost extends DTrees {
 
 
     //
-    // C++:  void cv::ml::Boost::setWeightTrimRate(double val)
+    // C++:  void setWeightTrimRate(double val)
     //
 
     //javadoc: Boost::setWeightTrimRate(val)
@@ -152,29 +152,29 @@ public class Boost extends DTrees {
 
 
 
-    // C++: static Ptr_Boost cv::ml::Boost::create()
+    // C++: static Ptr_Boost create()
     private static native long create_0();
 
-    // C++: static Ptr_Boost cv::ml::Boost::load(String filepath, String nodeName = String())
+    // C++: static Ptr_Boost load(String filepath, String nodeName = String())
     private static native long load_0(String filepath, String nodeName);
     private static native long load_1(String filepath);
 
-    // C++:  double cv::ml::Boost::getWeightTrimRate()
+    // C++:  double getWeightTrimRate()
     private static native double getWeightTrimRate_0(long nativeObj);
 
-    // C++:  int cv::ml::Boost::getBoostType()
+    // C++:  int getBoostType()
     private static native int getBoostType_0(long nativeObj);
 
-    // C++:  int cv::ml::Boost::getWeakCount()
+    // C++:  int getWeakCount()
     private static native int getWeakCount_0(long nativeObj);
 
-    // C++:  void cv::ml::Boost::setBoostType(int val)
+    // C++:  void setBoostType(int val)
     private static native void setBoostType_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::Boost::setWeakCount(int val)
+    // C++:  void setWeakCount(int val)
     private static native void setWeakCount_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::Boost::setWeightTrimRate(double val)
+    // C++:  void setWeightTrimRate(double val)
     private static native void setWeightTrimRate_0(long nativeObj, double val);
 
     // native support for java finalize()

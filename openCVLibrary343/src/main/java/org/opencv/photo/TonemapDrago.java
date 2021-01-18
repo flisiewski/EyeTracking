@@ -16,7 +16,7 @@ public class TonemapDrago extends Tonemap {
     public static TonemapDrago __fromPtr__(long addr) { return new TonemapDrago(addr); }
 
     //
-    // C++:  float cv::TonemapDrago::getBias()
+    // C++:  float getBias()
     //
 
     //javadoc: TonemapDrago::getBias()
@@ -30,7 +30,7 @@ public class TonemapDrago extends Tonemap {
 
 
     //
-    // C++:  float cv::TonemapDrago::getSaturation()
+    // C++:  float getSaturation()
     //
 
     //javadoc: TonemapDrago::getSaturation()
@@ -44,7 +44,7 @@ public class TonemapDrago extends Tonemap {
 
 
     //
-    // C++:  void cv::TonemapDrago::setBias(float bias)
+    // C++:  void setBias(float bias)
     //
 
     //javadoc: TonemapDrago::setBias(bias)
@@ -58,7 +58,7 @@ public class TonemapDrago extends Tonemap {
 
 
     //
-    // C++:  void cv::TonemapDrago::setSaturation(float saturation)
+    // C++:  void setSaturation(float saturation)
     //
 
     //javadoc: TonemapDrago::setSaturation(saturation)
@@ -78,16 +78,16 @@ public class TonemapDrago extends Tonemap {
 
 
 
-    // C++:  float cv::TonemapDrago::getBias()
+    // C++:  float getBias()
     private static native float getBias_0(long nativeObj);
 
-    // C++:  float cv::TonemapDrago::getSaturation()
+    // C++:  float getSaturation()
     private static native float getSaturation_0(long nativeObj);
 
-    // C++:  void cv::TonemapDrago::setBias(float bias)
+    // C++:  void setBias(float bias)
     private static native void setBias_0(long nativeObj, float bias);
 
-    // C++:  void cv::TonemapDrago::setSaturation(float saturation)
+    // C++:  void setSaturation(float saturation)
     private static native void setSaturation_0(long nativeObj, float saturation);
 
     // native support for java finalize()

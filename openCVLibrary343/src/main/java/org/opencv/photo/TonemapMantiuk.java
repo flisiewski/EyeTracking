@@ -16,7 +16,7 @@ public class TonemapMantiuk extends Tonemap {
     public static TonemapMantiuk __fromPtr__(long addr) { return new TonemapMantiuk(addr); }
 
     //
-    // C++:  float cv::TonemapMantiuk::getSaturation()
+    // C++:  float getSaturation()
     //
 
     //javadoc: TonemapMantiuk::getSaturation()
@@ -30,7 +30,7 @@ public class TonemapMantiuk extends Tonemap {
 
 
     //
-    // C++:  float cv::TonemapMantiuk::getScale()
+    // C++:  float getScale()
     //
 
     //javadoc: TonemapMantiuk::getScale()
@@ -44,7 +44,7 @@ public class TonemapMantiuk extends Tonemap {
 
 
     //
-    // C++:  void cv::TonemapMantiuk::setSaturation(float saturation)
+    // C++:  void setSaturation(float saturation)
     //
 
     //javadoc: TonemapMantiuk::setSaturation(saturation)
@@ -58,7 +58,7 @@ public class TonemapMantiuk extends Tonemap {
 
 
     //
-    // C++:  void cv::TonemapMantiuk::setScale(float scale)
+    // C++:  void setScale(float scale)
     //
 
     //javadoc: TonemapMantiuk::setScale(scale)
@@ -78,16 +78,16 @@ public class TonemapMantiuk extends Tonemap {
 
 
 
-    // C++:  float cv::TonemapMantiuk::getSaturation()
+    // C++:  float getSaturation()
     private static native float getSaturation_0(long nativeObj);
 
-    // C++:  float cv::TonemapMantiuk::getScale()
+    // C++:  float getScale()
     private static native float getScale_0(long nativeObj);
 
-    // C++:  void cv::TonemapMantiuk::setSaturation(float saturation)
+    // C++:  void setSaturation(float saturation)
     private static native void setSaturation_0(long nativeObj, float saturation);
 
-    // C++:  void cv::TonemapMantiuk::setScale(float scale)
+    // C++:  void setScale(float scale)
     private static native void setScale_0(long nativeObj, float scale);
 
     // native support for java finalize()

@@ -28,7 +28,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  Mat cv::ml::LogisticRegression::get_learnt_thetas()
+    // C++:  Mat get_learnt_thetas()
     //
 
     //javadoc: LogisticRegression::get_learnt_thetas()
@@ -42,7 +42,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++: static Ptr_LogisticRegression cv::ml::LogisticRegression::create()
+    // C++: static Ptr_LogisticRegression create()
     //
 
     //javadoc: LogisticRegression::create()
@@ -56,7 +56,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++: static Ptr_LogisticRegression cv::ml::LogisticRegression::load(String filepath, String nodeName = String())
+    // C++: static Ptr_LogisticRegression load(String filepath, String nodeName = String())
     //
 
     //javadoc: LogisticRegression::load(filepath, nodeName)
@@ -79,7 +79,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  TermCriteria cv::ml::LogisticRegression::getTermCriteria()
+    // C++:  TermCriteria getTermCriteria()
     //
 
     //javadoc: LogisticRegression::getTermCriteria()
@@ -93,7 +93,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  double cv::ml::LogisticRegression::getLearningRate()
+    // C++:  double getLearningRate()
     //
 
     //javadoc: LogisticRegression::getLearningRate()
@@ -107,7 +107,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  float cv::ml::LogisticRegression::predict(Mat samples, Mat& results = Mat(), int flags = 0)
+    // C++:  float predict(Mat samples, Mat& results = Mat(), int flags = 0)
     //
 
     //javadoc: LogisticRegression::predict(samples, results, flags)
@@ -119,27 +119,18 @@ public class LogisticRegression extends StatModel {
         return retVal;
     }
 
-    //javadoc: LogisticRegression::predict(samples, results)
-    public  float predict(Mat samples, Mat results)
-    {
-        
-        float retVal = predict_1(nativeObj, samples.nativeObj, results.nativeObj);
-        
-        return retVal;
-    }
-
     //javadoc: LogisticRegression::predict(samples)
     public  float predict(Mat samples)
     {
         
-        float retVal = predict_2(nativeObj, samples.nativeObj);
+        float retVal = predict_1(nativeObj, samples.nativeObj);
         
         return retVal;
     }
 
 
     //
-    // C++:  int cv::ml::LogisticRegression::getIterations()
+    // C++:  int getIterations()
     //
 
     //javadoc: LogisticRegression::getIterations()
@@ -153,7 +144,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  int cv::ml::LogisticRegression::getMiniBatchSize()
+    // C++:  int getMiniBatchSize()
     //
 
     //javadoc: LogisticRegression::getMiniBatchSize()
@@ -167,7 +158,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  int cv::ml::LogisticRegression::getRegularization()
+    // C++:  int getRegularization()
     //
 
     //javadoc: LogisticRegression::getRegularization()
@@ -181,7 +172,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  int cv::ml::LogisticRegression::getTrainMethod()
+    // C++:  int getTrainMethod()
     //
 
     //javadoc: LogisticRegression::getTrainMethod()
@@ -195,7 +186,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  void cv::ml::LogisticRegression::setIterations(int val)
+    // C++:  void setIterations(int val)
     //
 
     //javadoc: LogisticRegression::setIterations(val)
@@ -209,7 +200,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  void cv::ml::LogisticRegression::setLearningRate(double val)
+    // C++:  void setLearningRate(double val)
     //
 
     //javadoc: LogisticRegression::setLearningRate(val)
@@ -223,7 +214,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  void cv::ml::LogisticRegression::setMiniBatchSize(int val)
+    // C++:  void setMiniBatchSize(int val)
     //
 
     //javadoc: LogisticRegression::setMiniBatchSize(val)
@@ -237,7 +228,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  void cv::ml::LogisticRegression::setRegularization(int val)
+    // C++:  void setRegularization(int val)
     //
 
     //javadoc: LogisticRegression::setRegularization(val)
@@ -251,7 +242,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  void cv::ml::LogisticRegression::setTermCriteria(TermCriteria val)
+    // C++:  void setTermCriteria(TermCriteria val)
     //
 
     //javadoc: LogisticRegression::setTermCriteria(val)
@@ -265,7 +256,7 @@ public class LogisticRegression extends StatModel {
 
 
     //
-    // C++:  void cv::ml::LogisticRegression::setTrainMethod(int val)
+    // C++:  void setTrainMethod(int val)
     //
 
     //javadoc: LogisticRegression::setTrainMethod(val)
@@ -285,55 +276,54 @@ public class LogisticRegression extends StatModel {
 
 
 
-    // C++:  Mat cv::ml::LogisticRegression::get_learnt_thetas()
+    // C++:  Mat get_learnt_thetas()
     private static native long get_learnt_thetas_0(long nativeObj);
 
-    // C++: static Ptr_LogisticRegression cv::ml::LogisticRegression::create()
+    // C++: static Ptr_LogisticRegression create()
     private static native long create_0();
 
-    // C++: static Ptr_LogisticRegression cv::ml::LogisticRegression::load(String filepath, String nodeName = String())
+    // C++: static Ptr_LogisticRegression load(String filepath, String nodeName = String())
     private static native long load_0(String filepath, String nodeName);
     private static native long load_1(String filepath);
 
-    // C++:  TermCriteria cv::ml::LogisticRegression::getTermCriteria()
+    // C++:  TermCriteria getTermCriteria()
     private static native double[] getTermCriteria_0(long nativeObj);
 
-    // C++:  double cv::ml::LogisticRegression::getLearningRate()
+    // C++:  double getLearningRate()
     private static native double getLearningRate_0(long nativeObj);
 
-    // C++:  float cv::ml::LogisticRegression::predict(Mat samples, Mat& results = Mat(), int flags = 0)
+    // C++:  float predict(Mat samples, Mat& results = Mat(), int flags = 0)
     private static native float predict_0(long nativeObj, long samples_nativeObj, long results_nativeObj, int flags);
-    private static native float predict_1(long nativeObj, long samples_nativeObj, long results_nativeObj);
-    private static native float predict_2(long nativeObj, long samples_nativeObj);
+    private static native float predict_1(long nativeObj, long samples_nativeObj);
 
-    // C++:  int cv::ml::LogisticRegression::getIterations()
+    // C++:  int getIterations()
     private static native int getIterations_0(long nativeObj);
 
-    // C++:  int cv::ml::LogisticRegression::getMiniBatchSize()
+    // C++:  int getMiniBatchSize()
     private static native int getMiniBatchSize_0(long nativeObj);
 
-    // C++:  int cv::ml::LogisticRegression::getRegularization()
+    // C++:  int getRegularization()
     private static native int getRegularization_0(long nativeObj);
 
-    // C++:  int cv::ml::LogisticRegression::getTrainMethod()
+    // C++:  int getTrainMethod()
     private static native int getTrainMethod_0(long nativeObj);
 
-    // C++:  void cv::ml::LogisticRegression::setIterations(int val)
+    // C++:  void setIterations(int val)
     private static native void setIterations_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::LogisticRegression::setLearningRate(double val)
+    // C++:  void setLearningRate(double val)
     private static native void setLearningRate_0(long nativeObj, double val);
 
-    // C++:  void cv::ml::LogisticRegression::setMiniBatchSize(int val)
+    // C++:  void setMiniBatchSize(int val)
     private static native void setMiniBatchSize_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::LogisticRegression::setRegularization(int val)
+    // C++:  void setRegularization(int val)
     private static native void setRegularization_0(long nativeObj, int val);
 
-    // C++:  void cv::ml::LogisticRegression::setTermCriteria(TermCriteria val)
+    // C++:  void setTermCriteria(TermCriteria val)
     private static native void setTermCriteria_0(long nativeObj, int val_type, int val_maxCount, double val_epsilon);
 
-    // C++:  void cv::ml::LogisticRegression::setTrainMethod(int val)
+    // C++:  void setTrainMethod(int val)
     private static native void setTrainMethod_0(long nativeObj, int val);
 
     // native support for java finalize()

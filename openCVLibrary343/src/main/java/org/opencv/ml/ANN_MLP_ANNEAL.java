@@ -16,7 +16,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
     public static ANN_MLP_ANNEAL __fromPtr__(long addr) { return new ANN_MLP_ANNEAL(addr); }
 
     //
-    // C++:  double cv::ml::ANN_MLP_ANNEAL::getAnnealCoolingRatio()
+    // C++:  double getAnnealCoolingRatio()
     //
 
     //javadoc: ANN_MLP_ANNEAL::getAnnealCoolingRatio()
@@ -30,7 +30,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  double cv::ml::ANN_MLP_ANNEAL::getAnnealFinalT()
+    // C++:  double getAnnealFinalT()
     //
 
     //javadoc: ANN_MLP_ANNEAL::getAnnealFinalT()
@@ -44,7 +44,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  double cv::ml::ANN_MLP_ANNEAL::getAnnealInitialT()
+    // C++:  double getAnnealInitialT()
     //
 
     //javadoc: ANN_MLP_ANNEAL::getAnnealInitialT()
@@ -58,7 +58,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  int cv::ml::ANN_MLP_ANNEAL::getAnnealItePerStep()
+    // C++:  int getAnnealItePerStep()
     //
 
     //javadoc: ANN_MLP_ANNEAL::getAnnealItePerStep()
@@ -72,7 +72,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealCoolingRatio(double val)
+    // C++:  void setAnnealCoolingRatio(double val)
     //
 
     //javadoc: ANN_MLP_ANNEAL::setAnnealCoolingRatio(val)
@@ -86,7 +86,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealFinalT(double val)
+    // C++:  void setAnnealFinalT(double val)
     //
 
     //javadoc: ANN_MLP_ANNEAL::setAnnealFinalT(val)
@@ -100,7 +100,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealInitialT(double val)
+    // C++:  void setAnnealInitialT(double val)
     //
 
     //javadoc: ANN_MLP_ANNEAL::setAnnealInitialT(val)
@@ -114,7 +114,7 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
     //
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealItePerStep(int val)
+    // C++:  void setAnnealItePerStep(int val)
     //
 
     //javadoc: ANN_MLP_ANNEAL::setAnnealItePerStep(val)
@@ -134,28 +134,28 @@ public class ANN_MLP_ANNEAL extends ANN_MLP {
 
 
 
-    // C++:  double cv::ml::ANN_MLP_ANNEAL::getAnnealCoolingRatio()
+    // C++:  double getAnnealCoolingRatio()
     private static native double getAnnealCoolingRatio_0(long nativeObj);
 
-    // C++:  double cv::ml::ANN_MLP_ANNEAL::getAnnealFinalT()
+    // C++:  double getAnnealFinalT()
     private static native double getAnnealFinalT_0(long nativeObj);
 
-    // C++:  double cv::ml::ANN_MLP_ANNEAL::getAnnealInitialT()
+    // C++:  double getAnnealInitialT()
     private static native double getAnnealInitialT_0(long nativeObj);
 
-    // C++:  int cv::ml::ANN_MLP_ANNEAL::getAnnealItePerStep()
+    // C++:  int getAnnealItePerStep()
     private static native int getAnnealItePerStep_0(long nativeObj);
 
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealCoolingRatio(double val)
+    // C++:  void setAnnealCoolingRatio(double val)
     private static native void setAnnealCoolingRatio_0(long nativeObj, double val);
 
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealFinalT(double val)
+    // C++:  void setAnnealFinalT(double val)
     private static native void setAnnealFinalT_0(long nativeObj, double val);
 
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealInitialT(double val)
+    // C++:  void setAnnealInitialT(double val)
     private static native void setAnnealInitialT_0(long nativeObj, double val);
 
-    // C++:  void cv::ml::ANN_MLP_ANNEAL::setAnnealItePerStep(int val)
+    // C++:  void setAnnealItePerStep(int val)
     private static native void setAnnealItePerStep_0(long nativeObj, int val);
 
     // native support for java finalize()
